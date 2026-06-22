@@ -17,6 +17,9 @@ export default function Nav() {
           <Link href="/clinics" className="lk" style={pathname === '/clinics' ? active : undefined}>
             For clinics
           </Link>
+          <Link href="/blog" className="lk" style={pathname.startsWith('/blog') ? active : undefined}>
+            Blog
+          </Link>
           <a
             href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit"
             className="btn btn-primary"
