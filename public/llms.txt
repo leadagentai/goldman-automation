@@ -1,0 +1,28 @@
+# Goldman Automation
+
+Goldman Automation is a London-based automation studio founded by Adrian Goldman, a former construction company owner who now builds practical AI systems for small service businesses.
+
+## What it does
+
+Goldman Automation builds done-for-you AI automation for London trades (builders, electricians, plumbers, roofers) and clinics/beauty studios (salons, aesthetic clinics, physios, dentists). The focus is on three problems that cost service businesses the most money:
+
+1. **Missed enquiries** — missed calls get an instant SMS text-back; every lead is captured, scored and followed up automatically.
+2. **No-shows** — automated reminders and deposit capture cut empty slots.
+3. **Admin overhead** — digital forms, consents, client records and rebooking nudges run without manual effort.
+
+## Live products
+
+- **LeadAgentAI** — AI lead capture and qualification for trades. Catches emails, web forms and missed calls; scores each lead 1–10 on budget, scope and timeline; reads uploaded plans and photos; filters spam; sends 48-hour and 7-day follow-ups automatically. 73% automated enquiry response rate.
+
+- **Scure** — Full booking and client management system for beauty studios and clinics. Bilingual (English/Polish) AI receptionist available 24/7; confirmation, reminder and review sequences; digital consultation forms and consents; before/after photo storage; owner dashboard. Deployed at a North London beauty studio with 21 five-star Google reviews.
+
+## Packages
+
+- Trades package: from £495 setup + £299/month
+- Beauty & clinic package: from £750 setup + £297/month
+- Bespoke automation: from £1,500
+
+## Contact & homepage
+
+https://goldmanautomation.co.uk/
+hello@goldmanautomation.co.uk
