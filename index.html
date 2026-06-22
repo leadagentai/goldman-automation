@@ -453,72 +453,74 @@
 </footer>
 
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Goldman Automation",
-    "url": "https://goldmanautomation.co.uk/",
-    "email": "hello@goldmanautomation.co.uk",
-    "description": "A London automation studio building practical AI systems for trades and clinics — capturing enquiries, reducing no-shows, and cutting admin.",
-    "areaServed": [
-      {"@type": "City", "name": "London"},
-      {"@type": "Country", "name": "United Kingdom"}
-    ],
-    "founder": {"@type": "Person", "@id": "https://goldmanautomation.co.uk/#founder"},
-    "knowsAbout": ["AI automation", "lead capture", "booking automation", "trades", "clinics"]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": ["ProfessionalService", "LocalBusiness"],
-    "name": "Goldman Automation",
-    "url": "https://goldmanautomation.co.uk/",
-    "email": "hello@goldmanautomation.co.uk",
-    "description": "Done-for-you AI automation for London trades and clinics. Missed-call capture, AI lead scoring, 24/7 booking, no-show reduction, and digital records.",
-    "image": "https://goldmanautomation.co.uk/og-image.png",
-    "priceRange": "££",
-    "currenciesAccepted": "GBP",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "London",
-      "addressCountry": "GB"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://goldmanautomation.co.uk/#org",
+      "name": "Goldman Automation",
+      "url": "https://goldmanautomation.co.uk/",
+      "email": "hello@goldmanautomation.co.uk",
+      "description": "A London automation studio building practical AI systems for trades and clinics — capturing enquiries, reducing no-shows, and cutting admin.",
+      "areaServed": [
+        {"@type": "City", "name": "London"},
+        {"@type": "Country", "name": "United Kingdom"}
+      ],
+      "founder": {"@id": "https://goldmanautomation.co.uk/#founder"},
+      "knowsAbout": ["AI automation", "lead capture", "booking automation", "trades", "clinics"]
     },
-    "areaServed": {"@type": "Country", "name": "United Kingdom"},
-    "serviceType": ["AI Automation", "Business Automation", "Lead Management", "Booking Systems"],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Automation Packages",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Never Miss a Job — Trades Package",
-          "description": "Missed-call text-back, AI lead qualification, enquiry capture and automated follow-ups for builders, electricians, plumbers and roofers.",
-          "price": "495",
-          "priceCurrency": "GBP"
-        },
-        {
-          "@type": "Offer",
-          "name": "Fully Booked — Beauty & Clinic Package",
-          "description": "24/7 AI receptionist, deposit capture, reminder sequences, digital consents and client records for salons and clinics.",
-          "price": "750",
-          "priceCurrency": "GBP"
-        }
-      ]
+    {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": "https://goldmanautomation.co.uk/#service",
+      "name": "Goldman Automation",
+      "url": "https://goldmanautomation.co.uk/",
+      "email": "hello@goldmanautomation.co.uk",
+      "description": "Done-for-you AI automation for London trades and clinics. Missed-call capture, AI lead scoring, 24/7 booking, no-show reduction, and digital records.",
+      "image": "https://goldmanautomation.co.uk/og-image.png",
+      "priceRange": "££",
+      "currenciesAccepted": "GBP",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "areaServed": {"@type": "Country", "name": "United Kingdom"},
+      "serviceType": ["AI Automation", "Business Automation", "Lead Management", "Booking Systems"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Automation Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Never Miss a Job — Trades Package",
+            "description": "Missed-call text-back, AI lead qualification, enquiry capture and automated follow-ups for builders, electricians, plumbers and roofers.",
+            "price": "495",
+            "priceCurrency": "GBP"
+          },
+          {
+            "@type": "Offer",
+            "name": "Fully Booked — Beauty & Clinic Package",
+            "description": "24/7 AI receptionist, deposit capture, reminder sequences, digital consents and client records for salons and clinics.",
+            "price": "750",
+            "priceCurrency": "GBP"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://goldmanautomation.co.uk/#founder",
+      "name": "Adrian Goldman",
+      "jobTitle": "Founder",
+      "worksFor": {"@id": "https://goldmanautomation.co.uk/#org"},
+      "url": "https://goldmanautomation.co.uk/",
+      "email": "hello@goldmanautomation.co.uk",
+      "description": "Former London construction company owner turned software builder. Adrian built and runs both LeadAgentAI (for trades) and Scure (for beauty studios and clinics) before offering them to other businesses.",
+      "knowsAbout": ["AI automation", "business operations", "construction", "trades", "clinic management"]
     }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://goldmanautomation.co.uk/#founder",
-    "name": "Adrian Goldman",
-    "jobTitle": "Founder",
-    "worksFor": {"@type": "Organization", "name": "Goldman Automation"},
-    "url": "https://goldmanautomation.co.uk/",
-    "email": "hello@goldmanautomation.co.uk",
-    "description": "Former London construction company owner turned software builder. Adrian built and runs both LeadAgentAI (for trades) and Scure (for beauty studios and clinics) before offering them to other businesses.",
-    "knowsAbout": ["AI automation", "business operations", "construction", "trades", "clinic management"]
-  }
-]
+  ]
+}
 </script>
 
 <script>
