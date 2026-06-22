@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import Nav from './components/Nav';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -106,17 +107,7 @@ const animationScript = `
 export default function Home() {
   return (
     <>
-      <nav>
-        <div className="wrap nav-inner">
-          <a href="#top" className="logo">Goldman<span>.</span></a>
-          <div className="nav-links">
-            <a href="#packages" className="lk">packages</a>
-            <a href="#work" className="lk">work</a>
-            <a href="#process" className="lk">how it works</a>
-            <a href="#contact" className="btn btn-primary">Free audit</a>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       <header className="hero" id="top">
         <div className="wrap">
