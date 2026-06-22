@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://goldmanautomation.co.uk/sitemap.xml
