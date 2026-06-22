@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Script from 'next/script';
 import Nav from '../components/Nav';
 
@@ -232,7 +233,7 @@ export default function TradesPage() {
             </div>
           </div>
           <p className="pack-custom reveal" style={{marginTop:'32px'}}>
-            Run a salon or clinic? <b><a href="/clinics" style={{color:'var(--teal)'}}>See the clinics package →</a></b>
+            Run a salon or clinic? <b><Link href="/clinics" style={{color:'var(--teal)'}}>See the clinics package →</Link></b>
           </p>
         </div>
       </section>
@@ -252,15 +253,15 @@ export default function TradesPage() {
       <footer>
         <div className="wrap">
           <div className="foot-brand">
-            <a href="/" className="logo">Goldman<span>.</span></a>
+            <Link href="/" className="logo">Goldman<span>.</span></Link>
             <p>Automation studio · London, UK<br />Trades · clinics · custom workflows</p>
           </div>
           <div className="foot-links">
             <div className="foot-col">
               <h4>Pages</h4>
-              <a href="/">Home</a>
-              <a href="/trades">For trades</a>
-              <a href="/clinics">For clinics</a>
+              <Link href="/">Home</Link>
+              <Link href="/trades">For trades</Link>
+              <Link href="/clinics">For clinics</Link>
             </div>
             <div className="foot-col">
               <h4>Get in touch</h4>

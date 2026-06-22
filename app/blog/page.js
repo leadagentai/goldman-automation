@@ -1,6 +1,19 @@
 import Link from 'next/link';
+import Script from 'next/script';
 import Nav from '@/app/components/Nav';
 import { getAllPosts } from '@/lib/posts';
+
+const animationScript = `
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+`;
 
 export const metadata = {
   title: 'Blog — Practical guides for service businesses | Goldman Automation',
@@ -72,10 +85,10 @@ export default function BlogIndex() {
           <div className="foot-links">
             <div className="foot-col">
               <h4>Pages</h4>
-              <a href="/">Home</a>
-              <a href="/trades">For trades</a>
-              <a href="/clinics">For clinics</a>
-              <a href="/blog">Blog</a>
+              <Link href="/">Home</Link>
+              <Link href="/trades">For trades</Link>
+              <Link href="/clinics">For clinics</Link>
+              <Link href="/blog">Blog</Link>
             </div>
             <div className="foot-col">
               <h4>Get in touch</h4>
@@ -93,6 +106,11 @@ export default function BlogIndex() {
           </div>
         </div>
       </footer>
+      <Script
+        id="reveal-animations-blog"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: animationScript }}
+      />
     </>
   );
 }

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import Nav from '@/app/components/Nav';
@@ -68,9 +69,9 @@ export default async function PostPage({ params }) {
 
       <div className="article-wrap">
         <div className="article-header">
-          <a href="/blog" className="back-link">
+          <Link href="/blog" className="back-link">
             ← All posts
-          </a>
+          </Link>
           <span className="post-cat">{post.category}</span>
           <h1>{post.title}</h1>
           <div className="article-meta">
@@ -103,9 +104,9 @@ export default async function PostPage({ params }) {
       <footer>
         <div className="wrap">
           <div className="foot-brand">
-            <a href="/" className="logo">
+            <Link href="/" className="logo">
               Goldman<span>.</span>
-            </a>
+            </Link>
             <p>
               Automation studio · London, UK
               <br />
@@ -115,10 +116,10 @@ export default async function PostPage({ params }) {
           <div className="foot-links">
             <div className="foot-col">
               <h4>Pages</h4>
-              <a href="/">Home</a>
-              <a href="/trades">For trades</a>
-              <a href="/clinics">For clinics</a>
-              <a href="/blog">Blog</a>
+              <Link href="/">Home</Link>
+              <Link href="/trades">For trades</Link>
+              <Link href="/clinics">For clinics</Link>
+              <Link href="/blog">Blog</Link>
             </div>
             <div className="foot-col">
               <h4>Get in touch</h4>
