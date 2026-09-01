@@ -1,24 +1,27 @@
 import { getAllPosts } from '@/lib/posts';
 
+// Bump when the core pages get a substantive rewrite.
+const CORE_PAGES_UPDATED = new Date('2026-09-01');
+
 export default function sitemap() {
   const posts = getAllPosts();
 
   return [
     {
       url: 'https://goldmanautomation.co.uk/',
-      lastModified: new Date('2026-06-22'),
+      lastModified: CORE_PAGES_UPDATED,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: 'https://goldmanautomation.co.uk/trades/',
-      lastModified: new Date('2026-06-22'),
+      lastModified: CORE_PAGES_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: 'https://goldmanautomation.co.uk/clinics/',
-      lastModified: new Date('2026-06-22'),
+      lastModified: CORE_PAGES_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

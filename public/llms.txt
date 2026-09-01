@@ -1,28 +1,40 @@
 # Goldman Automation
 
-Goldman Automation is a London-based automation studio founded by Adrian Goldman, a former construction company owner who now builds practical AI systems for small service businesses.
+Goldman Automation is a one-person London studio run by Adrian Goldman. Adrian ran a construction company (Sagittarius Construction) before building software, and now designs, builds and runs automation systems that stop businesses losing money to admin — so enquiries get a response, follow-ups happen on time, and owners get their evenings back.
+
+Proven in construction and beauty. Built to fit whatever the business needs — trades and clinics are worked examples, not the limit of what Adrian builds. Serves London and remote across the UK.
 
 ## What it does
 
-Goldman Automation builds done-for-you AI automation for London trades (builders, electricians, plumbers, roofers) and clinics/beauty studios (salons, aesthetic clinics, physios, dentists). The focus is on three problems that cost service businesses the most money:
+The systems target wherever a business leaks money to admin, most commonly:
 
 1. **Missed enquiries** — missed calls get an instant SMS text-back; every lead is captured, scored and followed up automatically.
 2. **No-shows** — automated reminders and deposit capture cut empty slots.
 3. **Admin overhead** — digital forms, consents, client records and rebooking nudges run without manual effort.
 
-## Live products
+Designed to support UK GDPR-compliant workflows. Data hosted in the UK/EU; the client's data stays theirs and can be exported or deleted on request.
 
-- **LeadAgentAI** — AI lead capture and qualification for trades. Catches emails, web forms and missed calls; scores each lead 1–10 on budget, scope and timeline; reads uploaded plans and photos; filters spam; sends 48-hour and 7-day follow-ups automatically. 73% automated enquiry response rate.
+## Live products (real, attributed figures — confirmed 1 September 2026)
 
-- **Scure** — Full booking and client management system for beauty studios and clinics. Bilingual (English/Polish) AI receptionist available 24/7; confirmation, reminder and review sequences; digital consultation forms and consents; before/after photo storage; owner dashboard. Deployed at a North London beauty studio with 21 five-star Google reviews.
+- **LeadAgentAI** (built for Alexson Group, construction) — AI lead capture and qualification. Catches enquiries from email, contact form and missed calls (instant SMS text-back via Twilio); scores each enquiry 1–10 on budget, scope and timeline; flags red flags; reads uploaded plans and photos; drafts a branded reply ready to send; follows up automatically at 48 hours and 7 days. Results: 119 enquiries handled all-time; the AI drafts a ready reply in about 2 minutes; Alexson reviews each draft and sends it in about 2 hours on average, so nothing goes out without his sign-off; average lead score 6.7/10; 15 hot leads (8+) surfaced automatically.
+
+- **Scure** (built with a North London beauty studio as the proving ground) — full booking and client-management system. Bilingual English/Polish AI receptionist available 24/7; real-time availability with a Stripe deposit taken at every booking; automated confirmation, 24-hour reminder, post-visit review request and 28-day rebooking nudge; self-serve cancel and reschedule; digital consultation forms, consents and signatures; before/after photo storage; owner dashboard. It replaces Treatwell, Calendly, Mailchimp and MindBody. Results: 60 bookings and £2,205 booked through the system since launch; around £200/month saved in Treatwell commission; 33 five-star Google reviews.
+
+## How working together goes
+
+1. **Free lost-revenue audit** — 20 minutes, no pitch. A real number on what admin is costing the business.
+2. **Fixed-scope go-live** — one setup fee, one clear scope, live in days.
+3. **Monthly subscription** — Adrian monitors, maintains and improves the system as the business grows.
+
+Straight talk guarantee: if the free audit shows automation won't pay for itself, Adrian says so and won't take the job. 30-day rolling contract, cancel any time, no lock-in.
 
 ## Packages
 
-- Trades package: from £495 setup + £299/month
-- Beauty & clinic package: from £750 setup + £297/month
-- Bespoke automation: from £1,500
+- Trades: from £495 setup + £299/month, live in 7–10 working days
+- Beauty & clinics: from £750 setup + £297/month, live in ~14 days
+- Something else: bespoke automation from £1,500, scoped in the audit
 
 ## Contact & homepage
 
 https://goldmanautomation.co.uk/
-hello@goldmanautomation.co.uk
+hello@goldmanautomation.co.uk (general enquiries; for an audit, use the callback form on the site)
