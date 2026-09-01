@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import Nav from '@/app/components/Nav';
+import ContactSection from '@/app/components/ContactSection';
+import SiteFooter from '@/app/components/SiteFooter';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 
 export function generateStaticParams() {
@@ -61,8 +62,6 @@ export default async function PostPage({ params }) {
     year: 'numeric',
   });
 
-  const ctaSubject = encodeURIComponent('Free automation audit');
-
   return (
     <>
       <Nav />
@@ -86,57 +85,14 @@ export default async function PostPage({ params }) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        <div className="article-cta">
-          <p>
-            <strong>Want to know what automation would cost for your business?</strong> A
-            20-minute audit will give you a real number — no pitch, no obligation.
-          </p>
-          <a
-            href={`mailto:hello@goldmanautomation.co.uk?subject=${ctaSubject}`}
-            className="btn btn-primary"
-            style={{ whiteSpace: 'nowrap' }}
-          >
-            Book a free audit →
-          </a>
-        </div>
       </div>
 
-      <footer>
-        <div className="wrap">
-          <div className="foot-brand">
-            <Link href="/" className="logo">
-              Goldman<span>.</span>
-            </Link>
-            <p>
-              Automation studio · London, UK
-              <br />
-              Trades · clinics · custom workflows
-            </p>
-          </div>
-          <div className="foot-links">
-            <div className="foot-col">
-              <h4>Pages</h4>
-              <Link href="/">Home</Link>
-              <Link href="/trades">For trades</Link>
-              <Link href="/clinics">For clinics</Link>
-              <Link href="/blog">Blog</Link>
-            </div>
-            <div className="foot-col">
-              <h4>Get in touch</h4>
-              <a href="mailto:hello@goldmanautomation.co.uk">hello@goldmanautomation.co.uk</a>
-              <a href={`mailto:hello@goldmanautomation.co.uk?subject=${ctaSubject}`}>
-                Book a free audit
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="copyright">
-          <div className="wrap">
-            <span>© 2026 Goldman Automation</span>
-            <span>Built by a founder, not an agency.</span>
-          </div>
-        </div>
-      </footer>
+      <ContactSection
+        heading="Want a real number for your business?"
+        intro="A 20-minute audit gives you a figure for what admin is costing you — no pitch, no obligation. Tell me your best days and times."
+      />
+
+      <SiteFooter />
 
       <script
         type="application/ld+json"

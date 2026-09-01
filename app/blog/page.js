@@ -1,6 +1,8 @@
-import Link from 'next/link';
 import Script from 'next/script';
+import Link from 'next/link';
 import Nav from '@/app/components/Nav';
+import ContactSection from '@/app/components/ContactSection';
+import SiteFooter from '@/app/components/SiteFooter';
 import { getAllPosts } from '@/lib/posts';
 
 const animationScript = `
@@ -69,42 +71,13 @@ export default function BlogIndex() {
         </div>
       </section>
 
-      <footer>
-        <div className="wrap">
-          <div className="foot-brand">
-            <a href="/" className="logo">
-              Goldman<span>.</span>
-            </a>
-            <p>
-              Automation studio · London, UK
-              <br />
-              Trades · clinics · custom workflows
-            </p>
-          </div>
-          <div className="foot-links">
-            <div className="foot-col">
-              <h4>Pages</h4>
-              <Link href="/">Home</Link>
-              <Link href="/trades">For trades</Link>
-              <Link href="/clinics">For clinics</Link>
-              <Link href="/blog">Blog</Link>
-            </div>
-            <div className="foot-col">
-              <h4>Get in touch</h4>
-              <a href="mailto:hello@goldmanautomation.co.uk">hello@goldmanautomation.co.uk</a>
-              <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit">
-                Book a free audit
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="copyright">
-          <div className="wrap">
-            <span>© 2026 Goldman Automation</span>
-            <span>Built by a founder, not an agency.</span>
-          </div>
-        </div>
-      </footer>
+      <ContactSection
+        heading="Want a real number for your business?"
+        intro="A 20-minute audit gives you a figure for what admin is costing you — no pitch, no obligation. Tell me your best days and times."
+      />
+
+      <SiteFooter />
+
       <Script
         id="reveal-animations-blog"
         strategy="afterInteractive"

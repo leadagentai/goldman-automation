@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import Nav from './components/Nav';
-import CallbackForm from './components/CallbackForm';
+import ContactSection from './components/ContactSection';
+import SiteFooter from './components/SiteFooter';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -540,61 +541,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="contact" id="contact">
-        <div className="wrap contact-grid">
-          <div className="reveal">
-            <h2>Tell me when&#39;s good and I&#39;ll call.</h2>
-            <p className="intro">
-              No fixed slot, no back-and-forth — just let me know your best days and times, and the
-              one thing that&#39;s costing you the most in admin right now.
-            </p>
-          </div>
-          <div className="reveal">
-            <CallbackForm />
-          </div>
-        </div>
-      </div>
+      <ContactSection />
 
-      <footer>
-        <div className="wrap">
-          <div className="foot-brand">
-            <Link href="/" className="logo">Goldman<span>.</span></Link>
-            <p>
-              Automation studio · London + remote across the UK
-              <br />
-              Designed, built and run by Adrian.
-            </p>
-          </div>
-          <div className="foot-links">
-            <div className="foot-col">
-              <h4>Explore</h4>
-              <Link href="/#results">Results</Link>
-              <Link href="/#how-it-works">How it works</Link>
-              <Link href="/#about">About</Link>
-              <Link href="/trades">Trades</Link>
-              <Link href="/clinics">Clinics</Link>
-              <Link href="/blog">Blog</Link>
-            </div>
-            <div className="foot-col">
-              <h4>Get in touch</h4>
-              <a href="mailto:hello@goldmanautomation.co.uk">hello@goldmanautomation.co.uk</a>
-              <Link href="/#contact">Request a callback</Link>
-            </div>
-          </div>
-        </div>
-        <div className="copyright">
-          <div className="wrap">
-            <span>© 2026 Goldman Automation</span>
-            <span>
-              Privacy policy, terms and data-processing details available on request.
-            </span>
-          </div>
-        </div>
-      </footer>
-
-      <Link href="#contact" className="mobile-cta">
-        <span className="btn btn-primary">Request a callback</span>
-      </Link>
+      <SiteFooter />
 
       <script
         type="application/ld+json"

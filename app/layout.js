@@ -1,4 +1,5 @@
 import './globals.css';
+import MobileCta from './components/MobileCta';
 
 export const metadata = {
   title: 'Goldman Automation — stop losing money to admin | London',
@@ -33,7 +34,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <MobileCta />
+      </body>
     </html>
   );
 }

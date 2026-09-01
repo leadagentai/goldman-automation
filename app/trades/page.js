@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import Nav from '../components/Nav';
+import ContactSection from '../components/ContactSection';
+import SiteFooter from '../components/SiteFooter';
 
 export const metadata = {
   title: 'Automation for Trades — Never Miss a Job | Goldman Automation London',
@@ -88,7 +90,7 @@ export default function TradesPage() {
           <h1 className="reveal">You&#39;re on site. The phone rings. <em>Nobody answers.</em></h1>
           <p className="lead reveal">London trades lose good jobs every day — not because the work isn&#39;t there, but because the enquiry came in while they were up a ladder or in a ditch. <b>LeadAgentAI catches every call, scores every lead and does the chasing automatically.</b></p>
           <div className="hero-cta reveal">
-            <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-primary">Book a free audit <span aria-hidden="true">→</span></a>
+            <Link href="#contact" className="btn btn-primary">Book a free lost-revenue audit</Link>
             <a href="#how-it-works" className="btn btn-ghost">How it works <span aria-hidden="true">↓</span></a>
           </div>
           <p className="hero-note reveal">For builders, electricians, plumbers and roofers across London.</p>
@@ -126,7 +128,7 @@ export default function TradesPage() {
         </div>
       </section>
 
-      <section id="how-it-works" style={{background:'var(--bone-alt)'}}>
+      <section id="how-it-works" className="panel">
         <div className="wrap">
           <div className="sec-head reveal">
             <h2>Every enquiry caught, scored and chased.</h2>
@@ -224,53 +226,21 @@ export default function TradesPage() {
                 <li>Lead pipeline + instant notifications</li>
               </ul>
               <p className="live">◆ Live in 7–10 working days</p>
-              <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-primary">Book a trades audit</a>
+              <Link href="#contact" className="btn btn-primary">Book a trades audit</Link>
             </div>
           </div>
           <p className="pack-custom reveal" style={{marginTop:'32px'}}>
-            Run a salon or clinic? <b><Link href="/clinics" style={{color:'var(--teal)'}}>See the clinics package →</Link></b>
+            Run a salon or clinic? <b><Link href="/clinics" style={{color:'var(--green-deep)'}}>See the clinics package →</Link></b>
           </p>
         </div>
       </section>
 
-      <div className="cta" id="contact">
-        <div className="wrap">
-          <h2>Book a free lost-revenue audit.</h2>
-          <p>Twenty minutes. We&#39;ll put a number on what missed calls are costing you, and I&#39;ll tell you honestly what&#39;s worth fixing — no pitch, no obligation.</p>
-          <div className="cta-row">
-            <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-light">Book your free audit <span aria-hidden="true">→</span></a>
-            <a href="mailto:hello@goldmanautomation.co.uk" className="btn btn-ghost">hello@goldmanautomation.co.uk</a>
-          </div>
-        </div>
-      </div>
+      <ContactSection
+        heading="Book your free lost-revenue audit."
+        intro="Twenty minutes. A real number on what missed calls and slow follow-ups are costing your trades business — no pitch, no obligation."
+      />
 
-      <footer>
-        <div className="wrap">
-          <div className="foot-brand">
-            <Link href="/" className="logo">Goldman<span>.</span></Link>
-            <p>Automation studio · London, UK<br />Trades · clinics · custom workflows</p>
-          </div>
-          <div className="foot-links">
-            <div className="foot-col">
-              <h4>Pages</h4>
-              <Link href="/">Home</Link>
-              <Link href="/trades">For trades</Link>
-              <Link href="/clinics">For clinics</Link>
-            </div>
-            <div className="foot-col">
-              <h4>Get in touch</h4>
-              <a href="mailto:hello@goldmanautomation.co.uk">hello@goldmanautomation.co.uk</a>
-              <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit">Book a free audit</a>
-            </div>
-          </div>
-        </div>
-        <div className="copyright">
-          <div className="wrap">
-            <span>© 2026 Goldman Automation</span>
-            <span>Built by a founder, not an agency.</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <script
         type="application/ld+json"

@@ -342,6 +342,7 @@ footer .wrap{padding:48px 28px;display:flex;justify-content:space-between;gap:32
 .foot-col h4{font-family:var(--sans);font-size:0.85rem;font-weight:600;color:var(--graphite);margin-bottom:12px}
 .foot-col a{display:block;font-size:0.9rem;color:var(--ink-soft);margin-bottom:9px;transition:color .2s}
 .foot-col a:hover{color:var(--green-deep)}
+.foot-note{display:block;font-size:0.78rem;color:var(--muted);margin-top:4px;max-width:24ch}
 .copyright{border-top:1px solid var(--line)}
 .copyright .wrap{padding:18px 28px;font-size:0.82rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 

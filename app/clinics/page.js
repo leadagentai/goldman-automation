@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import Nav from '../components/Nav';
+import ContactSection from '../components/ContactSection';
+import SiteFooter from '../components/SiteFooter';
 
 export const metadata = {
   title: 'Booking Automation for Salons & Clinics | Goldman Automation London',
@@ -88,7 +90,7 @@ export default function ClinicsPage() {
           <h1 className="reveal">Stop losing bookings to missed calls, and revenue to <em>no-shows</em>.</h1>
           <p className="lead reveal">Scure gives your salon or clinic a 24/7 AI receptionist that books clients, sends reminders, captures deposits, keeps records and chases reviews — while you focus on the work. <b>Built for beauty studios, aesthetic clinics, physios and dental practices.</b></p>
           <div className="hero-cta reveal">
-            <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-primary">Book a free audit <span aria-hidden="true">→</span></a>
+            <Link href="#contact" className="btn btn-primary">Book a free lost-revenue audit</Link>
             <a href="#how-it-works" className="btn btn-ghost">How it works <span aria-hidden="true">↓</span></a>
           </div>
           <p className="hero-note reveal">For salons, aesthetic clinics, physios and dental practices across London.</p>
@@ -126,7 +128,7 @@ export default function ClinicsPage() {
         </div>
       </section>
 
-      <section id="how-it-works" style={{background:'var(--bone-alt)'}}>
+      <section id="how-it-works" className="panel">
         <div className="wrap">
           <div className="sec-head reveal">
             <h2>A full practice management system, built for busy clinics.</h2>
@@ -233,53 +235,21 @@ export default function ClinicsPage() {
                 <li>Owner dashboard — calendar, blocks, content</li>
               </ul>
               <p className="live">◆ Live in ~14 days</p>
-              <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-primary">Book a clinic audit</a>
+              <Link href="#contact" className="btn btn-primary">Book a clinic audit</Link>
             </div>
           </div>
           <p className="pack-custom reveal" style={{marginTop:'32px'}}>
-            In the trades? <b><Link href="/trades" style={{color:'var(--teal)'}}>See the trades package →</Link></b>
+            In the trades? <b><Link href="/trades" style={{color:'var(--green-deep)'}}>See the trades package →</Link></b>
           </p>
         </div>
       </section>
 
-      <div className="cta" id="contact">
-        <div className="wrap">
-          <h2>Book a free lost-revenue audit.</h2>
-          <p>Twenty minutes. We&#39;ll look at where bookings and revenue are leaking, and I&#39;ll tell you honestly what&#39;s worth automating — no obligation, no jargon.</p>
-          <div className="cta-row">
-            <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-light">Book your free audit <span aria-hidden="true">→</span></a>
-            <a href="mailto:hello@goldmanautomation.co.uk" className="btn btn-ghost">hello@goldmanautomation.co.uk</a>
-          </div>
-        </div>
-      </div>
+      <ContactSection
+        heading="Book your free lost-revenue audit."
+        intro="Twenty minutes. A real number on what missed calls, no-shows and admin are costing your practice — no obligation, no jargon."
+      />
 
-      <footer>
-        <div className="wrap">
-          <div className="foot-brand">
-            <Link href="/" className="logo">Goldman<span>.</span></Link>
-            <p>Automation studio · London, UK<br />Trades · clinics · custom workflows</p>
-          </div>
-          <div className="foot-links">
-            <div className="foot-col">
-              <h4>Pages</h4>
-              <Link href="/">Home</Link>
-              <Link href="/trades">For trades</Link>
-              <Link href="/clinics">For clinics</Link>
-            </div>
-            <div className="foot-col">
-              <h4>Get in touch</h4>
-              <a href="mailto:hello@goldmanautomation.co.uk">hello@goldmanautomation.co.uk</a>
-              <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit">Book a free audit</a>
-            </div>
-          </div>
-        </div>
-        <div className="copyright">
-          <div className="wrap">
-            <span>© 2026 Goldman Automation</span>
-            <span>Built by a founder, not an agency.</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <script
         type="application/ld+json"
