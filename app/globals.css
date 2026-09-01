@@ -269,10 +269,28 @@ header.hero{padding:80px 0 64px}
 .price-card .figure{font-family:var(--serif);font-size:1.35rem;color:var(--graphite);margin-bottom:6px}
 .price-card .figure b{color:var(--green-deep)}
 .price-card .timing{font-size:0.9rem;color:var(--muted)}
+.pricing-grid-3{grid-template-columns:repeat(3,1fr)}
 .pricing-link{font-size:0.98rem;margin-top:14px}
 .pricing-link a{color:var(--green-deep);font-weight:500;border-bottom:1px solid var(--gold)}
-.paths-note{margin-top:26px;font-size:1rem;color:var(--ink-soft)}
-.paths-note a{color:var(--green-deep);font-weight:500;border-bottom:1px solid var(--gold)}
+.paths-note{margin-top:28px;max-width:64ch}
+.paths-note p{font-size:1rem;color:var(--ink-soft);margin-bottom:10px}
+.paths-note a{display:inline-block;color:var(--green-deep);font-weight:500;border-bottom:1px solid var(--gold)}
+
+/* ---------- where the leaks usually are ---------- */
+.leaks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.leak-card{
+  background:var(--bg-panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow);
+}
+.leak-card h3{font-size:1.18rem;margin-bottom:14px}
+.leak-label{
+  font-size:0.8rem;font-weight:600;color:var(--gold);
+  margin-bottom:5px;
+}
+.leak-label + p{font-size:0.94rem;color:var(--ink-soft);margin-bottom:14px}
+.leak-card p:last-child{margin-bottom:0}
+.leaks-close{margin-top:34px;max-width:60ch}
+.leaks-close p{font-size:1.05rem;color:var(--graphite);margin-bottom:18px}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:52px;align-items:center}
@@ -469,7 +487,8 @@ footer .wrap{padding:48px 28px;display:flex;justify-content:space-between;gap:32
   .build-step{padding:0 0 0 8px}
   .build-step:not(:last-child):after{display:none}
   .how-steps{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
+  .pricing-grid,.pricing-grid-3{grid-template-columns:1fr}
+  .leaks-grid{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr;gap:28px}
   .about-photo{max-width:320px;aspect-ratio:1/1}
   .contact-grid{grid-template-columns:1fr;gap:30px}

@@ -169,6 +169,45 @@ const buildSteps = [
   },
 ];
 
+const leaks = [
+  {
+    name: 'Restaurants & cafés',
+    problem:
+      'The phone rings during service and no one can pick up — a booking or an order is gone.',
+    auto: 'Missed calls get an instant text back with a booking link; online ordering that confirms itself; reminders that cut no-shows.',
+  },
+  {
+    name: 'Accountants & small practices',
+    problem:
+      'New enquiries sit in an inbox for days; chasing clients for documents eats hours every week.',
+    auto: 'Every enquiry gets an instant acknowledgement and an intake form; missing documents get chased automatically until they are in.',
+  },
+  {
+    name: 'Property & letting agents',
+    problem:
+      'Viewing requests come in evenings and weekends when no one is answering; maintenance requests get lost between tenant, landlord and contractor.',
+    auto: 'After-hours viewing requests captured and booked without anyone at a desk; maintenance requests logged, triaged and chased on their own.',
+  },
+  {
+    name: 'Cleaning, gardening & home services',
+    problem:
+      'Quote requests land on Facebook, WhatsApp and the website all at once — some get missed entirely.',
+    auto: 'Every enquiry, whatever the channel, lands in one place with an instant reply; quotes and invoices chased automatically.',
+  },
+  {
+    name: 'Fitness studios & personal trainers',
+    problem:
+      'Trial enquiries go cold because no one follows up fast enough; late cancellations leave empty slots no one fills.',
+    auto: 'Instant reply to trial enquiries with next steps; automatic reminders and easy rebooking to cut late cancellations.',
+  },
+  {
+    name: 'Guesthouses & small hospitality',
+    problem:
+      'Booking enquiries outside office hours sit unanswered until morning — by then the guest has booked elsewhere.',
+    auto: '24/7 enquiry response with availability and pricing; pre-arrival and post-stay messages sent without anyone remembering to.',
+  },
+];
+
 const faqs = [
   {
     q: 'Where is my data stored?',
@@ -203,8 +242,9 @@ export default function Home() {
             <h1>Stop losing money to <em>admin</em>.</h1>
             <p className="lead">
               I design, build and run automation systems that stop businesses losing money to
-              admin — every enquiry answered, every follow-up on time, less paperwork. Proven in
-              construction and beauty, built to fit whatever your business needs.
+              admin — so enquiries get a response, follow-ups happen on time, and you get your
+              evenings back. Proven in construction and beauty. Built to fit whatever your
+              business needs.
             </p>
             <div className="hero-cta">
               <Link href="#contact" className="btn btn-primary">
@@ -297,10 +337,14 @@ export default function Home() {
               <Link href="/clinics" className="btn btn-ghost">See automation for clinics</Link>
             </div>
           </div>
-          <p className="paths-note reveal">
-            Not trades or clinics? <Link href="#contact">Book the audit anyway</Link> — the
-            process doesn&#39;t change.
-          </p>
+          <div className="paths-note reveal">
+            <p>
+              Running something else? These two are proof of what&#39;s possible, not the limit of
+              what I build. If admin is costing you time or jobs, the audit works the same way —
+              book it and let&#39;s find out where.
+            </p>
+            <Link href="#contact">Not trades or clinics? Book the audit anyway →</Link>
+          </div>
         </div>
       </section>
 
@@ -336,6 +380,36 @@ export default function Home() {
                 <p>{step.copy}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="where-leaks">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <h2>Where the leaks usually are</h2>
+            <p>
+              27–47% of calls to UK small businesses go unanswered. Every business loses money to
+              admin somewhere — here&#39;s where it usually shows up.
+            </p>
+          </div>
+          <div className="leaks-grid reveal">
+            {leaks.map((leak) => (
+              <div key={leak.name} className="leak-card">
+                <h3>{leak.name}</h3>
+                <p className="leak-label">Problem</p>
+                <p>{leak.problem}</p>
+                <p className="leak-label">Could be automated</p>
+                <p>{leak.auto}</p>
+              </div>
+            ))}
+          </div>
+          <div className="leaks-close reveal">
+            <p>
+              Don&#39;t see your business here? That&#39;s exactly what the audit is for — 20 minutes,
+              and I&#39;ll tell you where your money&#39;s leaking, whatever the business.
+            </p>
+            <Link href="#contact" className="btn btn-primary">Book your free lost-revenue audit</Link>
           </div>
         </div>
       </section>
@@ -470,7 +544,7 @@ export default function Home() {
             <h2>Pricing</h2>
             <p>A teaser — full detail and what&#39;s included lives on the trades and clinics pages.</p>
           </div>
-          <div className="pricing-grid reveal">
+          <div className="pricing-grid pricing-grid-3 reveal">
             <div className="price-card">
               <h3>For trades</h3>
               <div className="figure">
@@ -485,11 +559,14 @@ export default function Home() {
               </div>
               <div className="timing">Live in ~14 days</div>
             </div>
+            <div className="price-card">
+              <h3>Something else</h3>
+              <div className="figure">
+                bespoke automation from <b>£1,500</b>
+              </div>
+              <div className="timing">Scoped in the audit</div>
+            </div>
           </div>
-          <p className="pricing-link reveal">
-            Something else entirely? <b>Bespoke automation from £1,500.</b> If a task is repetitive,
-            it can almost certainly be automated — tell me what yours is.
-          </p>
           <p className="pricing-link reveal">
             See full pricing and what&#39;s included on{' '}
             <Link href="/trades">trades</Link> or <Link href="/clinics">clinics</Link>.
