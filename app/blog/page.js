@@ -32,7 +32,6 @@ export default function BlogIndex() {
 
       <header className="hero">
         <div className="wrap">
-          <span className="eyebrow reveal">// blog</span>
           <h1 className="reveal">Practical guides for service businesses.</h1>
           <p className="lead reveal">
             No fluff. Written by someone who has run a London construction company, built two live

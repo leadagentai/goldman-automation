@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import Script from 'next/script';
 import Nav from './components/Nav';
+import CallbackForm from './components/CallbackForm';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -11,7 +13,7 @@ const jsonLd = {
       url: 'https://goldmanautomation.co.uk/',
       email: 'hello@goldmanautomation.co.uk',
       description:
-        'A London automation studio building practical AI systems for trades and clinics — capturing enquiries, reducing no-shows, and cutting admin.',
+        'A London studio that designs, builds and runs automation systems for trades and clinics — so every enquiry gets a response and follow-ups happen on time.',
       areaServed: [
         { '@type': 'City', name: 'London' },
         { '@type': 'Country', name: 'United Kingdom' },
@@ -26,7 +28,7 @@ const jsonLd = {
       url: 'https://goldmanautomation.co.uk/',
       email: 'hello@goldmanautomation.co.uk',
       description:
-        'Done-for-you AI automation for London trades and clinics. Missed-call capture, AI lead scoring, 24/7 booking, no-show reduction, and digital records.',
+        'Done-for-you automation for London trades and clinics. Missed-call capture, AI lead scoring, 24/7 booking, no-show reduction and digital records — designed, built and maintained by one person.',
       image: 'https://goldmanautomation.co.uk/og-image.png',
       priceRange: '££',
       currenciesAccepted: 'GBP',
@@ -43,17 +45,17 @@ const jsonLd = {
         itemListElement: [
           {
             '@type': 'Offer',
-            name: 'Never Miss a Job — Trades Package',
+            name: 'Automation for trades',
             description:
-              'Missed-call text-back, AI lead qualification, enquiry capture and automated follow-ups for builders, electricians, plumbers and roofers.',
+              'Missed-call text-back, AI lead scoring, enquiry capture and automated follow-ups for builders, electricians, plumbers and roofers.',
             price: '495',
             priceCurrency: 'GBP',
           },
           {
             '@type': 'Offer',
-            name: 'Fully Booked — Beauty & Clinic Package',
+            name: 'Automation for beauty and clinics',
             description:
-              '24/7 AI receptionist, deposit capture, reminder sequences, digital consents and client records for salons and clinics.',
+              '24/7 bilingual booking, deposit capture, reminder sequences, digital consents and client records for salons and clinics.',
             price: '750',
             priceCurrency: 'GBP',
           },
@@ -69,7 +71,7 @@ const jsonLd = {
       url: 'https://goldmanautomation.co.uk/',
       email: 'hello@goldmanautomation.co.uk',
       description:
-        'Former London construction company owner turned software builder. Adrian built and runs both LeadAgentAI (for trades) and Scure (for beauty studios and clinics) before offering them to other businesses.',
+        'Ran a London construction company (Sagittarius Construction) before building software. Built LeadAgentAI to catch the enquiries he was missing on site, and the Scure system with his partner’s beauty studio as the proving ground.',
       knowsAbout: [
         'AI automation',
         'business operations',
@@ -91,18 +93,103 @@ const animationScript = `
     els.forEach(function(e){io.observe(e)});
   }
   if(!reduce){
-    var counted=false, proof=document.querySelector('.proof');
+    var counted=false, trust=document.querySelector('.trust');
     function run(){document.querySelectorAll('[data-count]').forEach(function(n){
       var t=parseInt(n.getAttribute('data-count'),10),s=null,d=1100;
       function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1),e=1-Math.pow(1-p,3);n.textContent=Math.round(e*t);if(p<1)requestAnimationFrame(step);else n.textContent=t;}
       requestAnimationFrame(step);});}
-    if(proof&&'IntersectionObserver'in window){
+    if(trust&&'IntersectionObserver'in window){
       var po=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!counted){counted=true;run();po.disconnect();}});},{threshold:0.4});
-      po.observe(proof);
+      po.observe(trust);
     }
   }
 })();
 `;
+
+const flowSteps = [
+  {
+    label: 'Missed call',
+    icon: (
+      <path d="M4 5c0 8 7 15 15 15l-2-4-4-1-2-3-3-2-1-4z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    ),
+  },
+  {
+    label: 'Instant text reply',
+    icon: (
+      <path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    ),
+  },
+  {
+    label: 'Photos and plans sent',
+    icon: (
+      <>
+        <rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M4 15l4-4 4 4 3-3 5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      </>
+    ),
+  },
+  {
+    label: 'System scores the enquiry',
+    icon: (
+      <path d="M4 20V10m5 10V5m5 15v-7m5 7V8" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    ),
+  },
+  {
+    label: 'Owner gets a ready-made summary',
+    icon: (
+      <>
+        <rect x="5" y="4" width="14" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      </>
+    ),
+  },
+];
+
+const buildSteps = [
+  {
+    name: 'Understand',
+    copy: 'A 20-minute call to map how enquiries reach you today and where they are being lost.',
+  },
+  {
+    name: 'Build',
+    copy: 'I build the system around the way you already work, not around a template.',
+  },
+  {
+    name: 'Connect',
+    copy: 'It plugs into the tools you already use — your number, your inbox, your calendar.',
+  },
+  {
+    name: 'Test',
+    copy: 'We run real scenarios through it before it goes anywhere near a customer.',
+  },
+  {
+    name: 'Support',
+    copy: 'Once it is live I keep monitoring it and improving it as your business grows.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Where is my data stored?',
+    a: 'On established cloud infrastructure hosted in the UK and EU. The systems are designed to support UK GDPR-compliant workflows, and you can ask for your data to be exported or deleted at any time.',
+  },
+  {
+    q: 'What are the cancellation terms?',
+    a: 'A 30-day rolling contract. Cancel any time with 30 days’ notice. There is no minimum term and no lock-in.',
+  },
+  {
+    q: 'What happens to my client data if I cancel?',
+    a: 'It stays yours. I export it in a standard format, hand it over, and then remove it from the system.',
+  },
+  {
+    q: 'How quickly do you respond to support requests?',
+    a: 'Same working day for anything urgent that affects live bookings or enquiry capture. Within two working days for everything else.',
+  },
+  {
+    q: 'Am I tied into a long contract?',
+    a: 'No. One fixed setup fee, then a month-to-month subscription you can stop whenever it stops being worth it.',
+  },
+];
 
 export default function Home() {
   return (
@@ -110,213 +197,343 @@ export default function Home() {
       <Nav />
 
       <header className="hero" id="top">
-        <div className="wrap">
-          <span className="eyebrow reveal">// business automation · London · trades &amp; clinics</span>
-          <h1 className="reveal">Stop losing jobs to missed calls, and bookings to <em>no-shows</em>.</h1>
-          <p className="lead reveal">Goldman Automation builds practical AI systems for London trades and clinics — capturing every enquiry, filling every slot, and handling the admin that slows you down. <b>Built by a founder who&#39;s run the businesses he automates.</b></p>
-          <div className="hero-cta reveal">
-            <a href="#contact" className="btn btn-primary">Book a free lost-revenue audit <span aria-hidden="true">→</span></a>
-            <a href="#work" className="btn btn-ghost">See 2 live systems</a>
+        <div className="wrap hero-grid">
+          <div className="hero-copy reveal">
+            <h1>Stop losing jobs to <em>missed calls</em>.</h1>
+            <p className="lead">
+              I design, build and run automation systems for trades and clinics — so every
+              enquiry gets a response, follow-ups happen on time, and you get your evenings back.
+            </p>
+            <div className="hero-cta">
+              <Link href="#contact" className="btn btn-primary">
+                Book your free lost-revenue audit
+              </Link>
+              <Link href="#how-it-works" className="btn btn-ghost">
+                See how the systems work
+              </Link>
+            </div>
+            <p className="hero-note">
+              20 minutes. No pitch — just the number you&#39;re losing to admin.
+            </p>
           </div>
-          <p className="hero-note reveal">For builders, electricians, plumbers, salons, clinics and busy service businesses across London.</p>
+
+          <div className="flow reveal" aria-label="How an enquiry moves through the system">
+            <div className="flow-title">What happens when a call comes in</div>
+            {flowSteps.map((step, i) => (
+              <div key={step.label}>
+                <div className="flow-step">
+                  <span className="flow-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">{step.icon}</svg>
+                  </span>
+                  <span>{step.label}</span>
+                </div>
+                {i < flowSteps.length - 1 && (
+                  <div className="flow-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 4v16m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </header>
 
-      <div className="proof">
+      <div className="trust">
         <div className="wrap">
-          <div className="proof-grid">
-            <div className="proof-item reveal"><div className="num" data-count="2">2</div><div className="src">built in-house</div><div className="lbl">live systems built and run by me</div></div>
-            <div className="proof-item reveal"><div className="num" data-count="21">21</div><div className="src">Scure</div><div className="lbl">five-star Google reviews</div></div>
-            <div className="proof-item reveal"><div className="num"><b data-count="73">73</b>%</div><div className="src">LeadAgentAI</div><div className="lbl">automated enquiry response rate</div></div>
-            <div className="proof-item reveal"><div className="num">24/7</div><div className="src">no extra staff</div><div className="lbl">enquiry &amp; call capture</div></div>
+          <div className="trust-grid">
+            <div className="trust-item reveal">
+              <div className="tnum"><span data-count="119">119</span></div>
+              <div className="tlabel">enquiries handled automatically</div>
+              <div className="tsrc">LeadAgentAI · Alexson Group · all-time</div>
+            </div>
+            <div className="trust-item reveal">
+              <div className="tnum"><span data-count="33">33</span></div>
+              <div className="tlabel">five-star Google reviews</div>
+              <div className="tsrc">Scure · North London</div>
+            </div>
+            <div className="trust-item reveal">
+              <div className="tnum">2<span className="unit">min</span></div>
+              <div className="tlabel">for the AI to draft a ready reply</div>
+              <div className="tsrc">LeadAgentAI</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <section id="problems">
+      <section id="paths">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// where the money leaks</span>
-            <h2>You&#39;re not short of work. You&#39;re losing it to admin.</h2>
-            <p>Most service businesses lose more to missed calls, no-shows and manual chasing than to anything else. These are the leaks worth plugging first.</p>
+            <h2>Two systems, built for two kinds of business</h2>
+            <p>Both are already running in real businesses. Pick the one that fits yours.</p>
           </div>
-          <div className="prob-grid">
-            <div className="prob reveal">
-              <div className="ic" aria-hidden="true">◇</div>
-              <h3>Stop missing enquiries</h3>
-              <p>Every missed call gets an instant text-back, every enquiry is captured, qualified and logged. The job that used to go to whoever picked up first now comes to you.</p>
+          <div className="path-grid">
+            <div className="path-card reveal">
+              <div className="path-kicker">For construction &amp; trades</div>
+              <h3>Never miss a job to a missed call.</h3>
+              <ul>
+                <li>Instant text-back on missed calls</li>
+                <li>Reads plans and photos, drafts a costed reply</li>
+                <li>Automatic follow-up at 48 hours and 7 days</li>
+              </ul>
+              <div className="path-media">[ Image placeholder — jobsite photo or LeadAgentAI screen ]</div>
+              <Link href="/trades" className="btn btn-ghost">See automation for trades</Link>
             </div>
-            <div className="prob reveal">
-              <div className="ic" aria-hidden="true">○</div>
-              <h3>Stop losing slots to no-shows</h3>
-              <p>Automated reminders and deposit capture cut no-shows dramatically. Empty chairs and cancelled jobs stop quietly draining your week.</p>
-            </div>
-            <div className="prob reveal">
-              <div className="ic" aria-hidden="true">▢</div>
-              <h3>Stop chasing people manually</h3>
-              <p>Follow-ups, rebooking nudges and review requests send themselves, on time, every time — the chase you never get round to, done consistently.</p>
-            </div>
-            <div className="prob reveal">
-              <div className="ic" aria-hidden="true">⋈</div>
-              <h3>Stop drowning in paperwork</h3>
-              <p>Forms, consents, quotes, client records and notes — digital, searchable, GDPR-safe and kept against the right customer. No paper, nothing lost.</p>
+            <div className="path-card reveal">
+              <div className="path-kicker">For beauty &amp; clinics</div>
+              <h3>Fully booked. Fewer no-shows.</h3>
+              <ul>
+                <li>24/7 booking in English and Polish</li>
+                <li>Reminders and deposit capture</li>
+                <li>Consultation forms, consents, client records</li>
+              </ul>
+              <div className="path-media">[ Image placeholder — Scure studio photo ]</div>
+              <Link href="/clinics" className="btn btn-ghost">See automation for clinics</Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pack-wrap" id="packages">
+      <section className="panel" id="what-gets-easier">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// two done-for-you packages</span>
-            <h2>Pick the system built for your business</h2>
-            <p>Fixed scope, fixed price, live in days. Two proven systems I&#39;ve already built and run — deployed and tuned around the way you work.</p>
+            <h2>What gets easier once it&#39;s running</h2>
           </div>
-          <div className="pack-grid">
-            <div className="pack reveal">
-              <span className="tag">For trades</span>
-              <h3>Never miss a job</h3>
-              <p className="built">Built on LeadAgentAI — for builders, electricians, plumbers, roofers</p>
-              <div className="price">from <b>£495</b> setup <span style={{color:'var(--muted)',fontWeight:400}}>+</span> £299/mo</div>
-              <p className="price-sub">Pro tier £449/mo · pass-through usage at cost</p>
-              <ul>
-                <li>Missed-call instant text-back &amp; enquiry capture</li>
-                <li>AI lead qualification and 1–10 scoring</li>
-                <li>Reads plans &amp; photos, drafts a costed reply</li>
-                <li>Automatic 48-hour and 7-day follow-ups</li>
-                <li>Filters out time-wasters and spam</li>
-                <li>Lead pipeline + instant notifications</li>
-              </ul>
-              <p className="live">◆ Live in 7–10 working days</p>
-              <a href="#contact" className="btn btn-primary">Book a trades audit</a>
-            </div>
-            <div className="pack reveal">
-              <span className="tag">For beauty &amp; clinics</span>
-              <h3>Fully booked, fewer no-shows</h3>
-              <p className="built">Built on the Scure stack — for salons, aesthetic &amp; dental clinics, physios</p>
-              <div className="price">from <b>£750</b> setup <span style={{color:'var(--muted)',fontWeight:400}}>+</span> £297/mo</div>
-              <p className="price-sub">Clinic tier £497/mo · pass-through usage at cost</p>
-              <ul>
-                <li>AI receptionist that books 24/7, EN &amp; PL</li>
-                <li>Reminders + deposit capture to kill no-shows</li>
-                <li>Rebooking nudges and review requests</li>
-                <li>Digital consultation forms, consents &amp; signatures</li>
-                <li>Client records, before/after photos, notes</li>
-                <li>Owner dashboard — calendar, blocks, content</li>
-              </ul>
-              <p className="live">◆ Live in ~14 days</p>
-              <a href="#contact" className="btn btn-primary">Book a clinic audit</a>
-            </div>
-          </div>
-          <p className="pack-custom reveal">Something else entirely? <b>Bespoke automation from £1,500</b> — if a task is repetitive, it can almost certainly be automated. Tell me what yours is.</p>
+          <ul className="easier-list reveal">
+            <li>Give every good enquiry a proper response</li>
+            <li>Keep customer information organised automatically</li>
+            <li>Reduce no-shows with timely reminders and deposits</li>
+            <li>Separate genuine projects from irrelevant enquiries</li>
+            <li>Know exactly what&#39;s worth automating, and what isn&#39;t</li>
+          </ul>
         </div>
       </section>
 
-      <section id="work">
+      <section id="approach">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// the proof</span>
-            <h2>Real systems, already running in real businesses</h2>
-            <p>I don&#39;t show mock-ups. Both packages above are products I built from scratch and run every day. The numbers are real and attributed.</p>
+            <h2>This isn&#39;t another tool for you to configure</h2>
+            <p>
+              I map your workflow, build the system, connect it to your existing tools, test it
+              with real scenarios, and keep looking after it once it&#39;s live.
+            </p>
           </div>
+          <div className="build-steps reveal">
+            {buildSteps.map((step, i) => (
+              <div key={step.name} className="build-step">
+                <div className="bnum">{i + 1}</div>
+                <h3>{step.name}</h3>
+                <p>{step.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="case case-light reveal">
-            <div className="case-top">
-              <h3>Scure</h3>
-              <span className="ctag ctag-l">Beauty studio · North London</span>
-            </div>
-            <p className="problem">The owner works hands-on all day and <b>can&#39;t answer the phone mid-treatment</b> — so enquiries went unanswered and bookings slipped away. Now the studio runs itself around her.</p>
-            <div className="feat-grid">
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> A front desk that never sleeps</div><div className="fd">An AI receptionist answers in English or Polish, recommends the right treatment, checks real availability and books the visit — at any hour.</div></div>
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> The whole booking on autopilot</div><div className="fd">Confirmation, day-before reminder, post-visit thank-you with a review request, and a rebooking nudge at 28 days — all automatic.</div></div>
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> Paperless, GDPR-safe records</div><div className="fd">Per-client profiles with consultation forms, digital signatures, consents, before/after photos and private notes.</div></div>
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> One panel to run it all</div><div className="fd">The owner controls the calendar, blocks days and publishes content from a single dashboard — no developer needed.</div></div>
-            </div>
-            <div className="case-stats">
-              <div className="cstat"><div className="cn">21</div><div className="cl">five-star Google reviews</div></div>
-              <div className="cstat"><div className="cn">EN / PL</div><div className="cl">bilingual receptionist</div></div>
-              <div className="cstat"><div className="cn">0</div><div className="cl">enquiries missed overnight</div></div>
-            </div>
-            <p className="touch">A small touch clients notice: a step-by-step parking guide arrives automatically with every booking confirmation.</p>
+      <section className="panel" id="results">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <h2>Real systems, already running</h2>
+            <p>
+              Both are products I built from scratch and run every day. The numbers are real and
+              attributed.
+            </p>
           </div>
 
           <div className="case case-dark reveal">
-            <div className="case-top">
+            <div className="case-head">
               <h3>LeadAgentAI</h3>
-              <span className="ctag ctag-d">Construction &amp; trades</span>
+              <span className="case-tag">Alexson Group · construction</span>
             </div>
-            <p className="problem">Most building firms simply <b>never reply to enquiries</b> — good jobs go cold while they&#39;re on site. This catches every one, sorts the real from the noise, and does the chasing.</p>
-            <div className="feat-grid">
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> Catches every enquiry</div><div className="fd">Email, web form or missed call — a missed call fires an instant SMS with a project form link, so nothing slips through.</div></div>
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> Reads and scores it</div><div className="fd">Every enquiry gets a 1–10 score on budget, scope and timeline. It even reads uploaded plans and photos to understand the job.</div></div>
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> Filters out the noise</div><div className="fd">Spam, job offers and time-wasters are archived automatically, so only genuine projects ever reach you.</div></div>
-              <div className="feat"><div className="ft"><span aria-hidden="true">◆</span> Does the chasing for you</div><div className="fd">If a lead goes quiet it follows up at 48 hours and 7 days, then hands you a costed report and a ready-to-send reply.</div></div>
+            <div className="case-media">[ Image placeholder — LeadAgentAI dashboard or admin screen ]</div>
+
+            <div className="case-block">
+              <h4>Before</h4>
+              <p>
+                Missed calls during working hours, no follow-up system, and enquiries lost with no
+                record that they ever came in.
+              </p>
             </div>
-            <div className="case-stats">
-              <div className="cstat"><div className="cn">73%</div><div className="cl">enquiry response rate</div></div>
-              <div className="cstat"><div className="cn">6.7</div><div className="cl">avg lead score / 10</div></div>
-              <div className="cstat"><div className="cn">5 hr</div><div className="cl">avg reply time</div></div>
+            <div className="case-block">
+              <h4>What changed</h4>
+              <p>
+                Now the system captures leads from email, the contact form and missed calls, with an
+                instant SMS text-back via Twilio. An AI scores every enquiry from 1 to 10, flags red
+                flags, and reads uploaded plans and photos to understand the job. It drafts a branded
+                reply ready to send, and follows up automatically at 48 hours and 7 days. Alexson
+                reviews each draft and sends it in about two hours on average — nothing goes out
+                without his sign-off.
+              </p>
             </div>
+
+            <div className="case-results">
+              <span className="result-chip">119 enquiries handled</span>
+              <span className="result-chip">2 min to draft a reply</span>
+              <span className="result-chip">6.7/10 average lead score</span>
+              <span className="result-chip">15 hot leads (8+) surfaced automatically</span>
+            </div>
+
+            <div className="case-quote">[ Quote placeholder — real words from Emil at Alexson Group ]</div>
+
+            <Link href="/trades" className="btn btn-ghost">See the full case study</Link>
+          </div>
+
+          <div className="case case-light reveal">
+            <div className="case-head">
+              <h3>Scure</h3>
+              <span className="case-tag">Beauty studio · North London</span>
+            </div>
+            <div className="case-media">[ Image placeholder — Scure studio photo or booking calendar ]</div>
+
+            <div className="case-block">
+              <h4>Before</h4>
+              <p>
+                Missed enquiries overnight, booking handled by hand, and no deposit system to protect
+                against no-shows.
+              </p>
+            </div>
+            <div className="case-block">
+              <h4>What changed</h4>
+              <p>
+                A bilingual English and Polish AI receptionist now handles booking against real-time
+                availability, with a Stripe deposit taken at every booking. Confirmation, a 24-hour
+                reminder, a post-visit review request and a 28-day rebooking nudge all send
+                themselves, and clients can cancel or reschedule on their own. It replaces Treatwell,
+                Calendly, Mailchimp and MindBody entirely.
+              </p>
+            </div>
+
+            <div className="case-results">
+              <span className="result-chip">£2,205 booked through the system since launch</span>
+              <span className="result-chip">60 bookings</span>
+              <span className="result-chip">~£200/month saved in Treatwell commission</span>
+              <span className="result-chip">33 five-star Google reviews</span>
+            </div>
+
+            <div className="case-quote">[ Quote placeholder — real words from Aleksandra at Scure ]</div>
+
+            <Link href="/clinics" className="btn btn-ghost">See the full case study</Link>
           </div>
         </div>
       </section>
 
-      <section className="why" id="about">
-        <div className="wrap why-grid">
-          <div className="why-photo reveal">
-            <div className="ph-ring" aria-hidden="true"></div>
-            <div className="ph-label">// Adrian Goldman<br />founder<br />London</div>
+      <section id="how-it-works">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <h2>How working together goes</h2>
           </div>
-          <div className="why-body reveal">
-            <span className="eyebrow">// built by a founder, not an agency</span>
-            <h2>I&#39;ve run the businesses I automate.</h2>
-            <p>I owned and ran a London construction company before I ever built software. I know what it feels like to lose a good job because you were on site and couldn&#39;t get to the phone.</p>
-            <p>So I built <b>LeadAgentAI</b> to catch the enquiries builders miss, and the <b>Scure</b> system for a studio owner who couldn&#39;t book clients while her hands were busy. Both are live, both are mine, and both work.</p>
-            <p>When you work with me you deal with the person who designs and builds the system — someone who&#39;s run a real business and knows what actually moves the needle, not an account manager.</p>
+          <div className="how-steps reveal">
+            <div className="how-step">
+              <div className="bnum">1</div>
+              <h3>Free lost-revenue audit</h3>
+              <p>
+                20 minutes. A real number on what missed calls, no-shows and admin are costing you.
+                No pitch.
+              </p>
+            </div>
+            <div className="how-step">
+              <div className="bnum">2</div>
+              <h3>Fixed-scope go-live</h3>
+              <p>One setup fee, one clear scope, live in days.</p>
+            </div>
+            <div className="how-step">
+              <div className="bnum">3</div>
+              <h3>Monthly subscription</h3>
+              <p>I monitor, maintain and improve the system as your business grows.</p>
+            </div>
+          </div>
+          <div className="straight-talk reveal">
+            <h3>Straight talk guarantee</h3>
+            <p>
+              If the free audit shows automation won&#39;t pay for itself in your business, I&#39;ll
+              say so — and I won&#39;t take the job.
+            </p>
+            <p className="fine">30-day rolling contract. Cancel any time. No lock-in.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="panel" id="pricing">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <h2>Pricing</h2>
+            <p>A teaser — full detail and what&#39;s included lives on the trades and clinics pages.</p>
+          </div>
+          <div className="pricing-grid reveal">
+            <div className="price-card">
+              <h3>For trades</h3>
+              <div className="figure">
+                from <b>£495</b> setup + <b>£299</b>/mo
+              </div>
+              <div className="timing">Live in 7–10 working days</div>
+            </div>
+            <div className="price-card">
+              <h3>For beauty &amp; clinics</h3>
+              <div className="figure">
+                from <b>£750</b> setup + <b>£297</b>/mo
+              </div>
+              <div className="timing">Live in ~14 days</div>
+            </div>
+          </div>
+          <p className="pricing-link reveal">
+            See full pricing and what&#39;s included on{' '}
+            <Link href="/trades">trades</Link> or <Link href="/clinics">clinics</Link>.
+          </p>
+        </div>
+      </section>
+
+      <section id="about">
+        <div className="wrap about-grid">
+          <div className="about-photo reveal">[ Image placeholder — photo of Adrian ]</div>
+          <div className="about-body reveal">
+            <h2>Hi, I&#39;m Adrian. I built these systems because I had the same problems in my own business.</h2>
+            <p>
+              I ran a construction company in London — Sagittarius Construction — and the missed
+              calls landed on me while I was on site. I built LeadAgentAI to solve my own problem
+              first, before it was anything anyone else could buy.
+            </p>
+            <p>
+              The Scure system started the same way: I built it with my partner&#39;s beauty studio
+              as the proving ground, where every feature had to earn its place against a real day&#39;s
+              work.
+            </p>
+            <p>
+              When you work with me, you work directly with the person who designs and runs your
+              system — not an account manager.
+            </p>
             <p className="sig">Let&#39;s get the lost revenue back.</p>
           </div>
         </div>
       </section>
 
-      <section id="process">
+      <section className="panel" id="faq">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// how it works</span>
-            <h2>Simple, fixed-scope, no lock-in</h2>
-            <p>You don&#39;t need a spec or a tech team. Bring the problem; I&#39;ll quantify it, build the fix, and support it.</p>
+            <h2>Questions and data security</h2>
           </div>
-          <div className="proc-grid">
-            <div className="proc-step reveal">
-              <div className="pn">step 01</div>
-              <h3>Free lost-revenue audit</h3>
-              <p>A 20-minute call where we put a real number on what missed calls, no-shows and admin are costing you. No pitch, just the figure.</p>
-            </div>
-            <div className="proc-step reveal">
-              <div className="pn">step 02</div>
-              <h3>Fixed-scope go-live</h3>
-              <p>One setup fee, one clear scope, live in days. I build and tune the system around your business and hand it over working.</p>
-            </div>
-            <div className="proc-step reveal">
-              <div className="pn">step 03</div>
-              <h3>Monthly support</h3>
-              <p>I monitor, maintain and improve it as you grow. 30-day rolling, no long contracts, cancel any time.</p>
-            </div>
-          </div>
-          <div className="guarantee reveal">
-            <span className="gi" aria-hidden="true">◆</span>
-            <p><b>Straight talk guarantee.</b> If the audit shows automation won&#39;t pay for itself in your business, I&#39;ll tell you that plainly — and we won&#39;t go ahead. I&#39;d rather have your trust than a bad fit.</p>
+          <div className="faq-list reveal">
+            {faqs.map((item) => (
+              <details key={item.q} className="faq-item">
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="cta" id="contact">
-        <div className="wrap">
-          <span className="eyebrow">// let&#39;s find your leaks</span>
-          <h2>Book a free lost-revenue audit.</h2>
-          <p>Twenty minutes. We&#39;ll look at where your time and money go, and I&#39;ll tell you honestly what&#39;s worth automating — no obligation, no jargon.</p>
-          <div className="cta-row">
-            <a href="mailto:hello@goldmanautomation.co.uk?subject=Free%20automation%20audit" className="btn btn-light">Book your free audit <span aria-hidden="true">→</span></a>
-            <a href="mailto:hello@goldmanautomation.co.uk" className="btn btn-ghost">hello@goldmanautomation.co.uk</a>
+      <div className="contact" id="contact">
+        <div className="wrap contact-grid">
+          <div className="reveal">
+            <h2>Tell me when&#39;s good and I&#39;ll call.</h2>
+            <p className="intro">
+              No fixed slot, no back-and-forth — just let me know your best days and times, and the
+              one thing that&#39;s costing you the most in admin right now.
+            </p>
+          </div>
+          <div className="reveal">
+            <CallbackForm />
           </div>
         </div>
       </div>
@@ -324,31 +541,43 @@ export default function Home() {
       <footer>
         <div className="wrap">
           <div className="foot-brand">
-            <div className="logo">Goldman<span>.</span></div>
-            <p>Automation studio · London, UK<br />Trades · clinics · custom workflows</p>
+            <Link href="/" className="logo">Goldman<span>.</span></Link>
+            <p>
+              Automation studio · London + remote across the UK
+              <br />
+              Designed, built and run by Adrian.
+            </p>
           </div>
           <div className="foot-links">
             <div className="foot-col">
-              <h4>Packages</h4>
-              <a href="#packages">For trades</a>
-              <a href="#packages">For beauty &amp; clinics</a>
-              <a href="#work">Live work</a>
-              <a href="#process">How it works</a>
+              <h4>Explore</h4>
+              <Link href="/#results">Results</Link>
+              <Link href="/#how-it-works">How it works</Link>
+              <Link href="/#about">About</Link>
+              <Link href="/trades">Trades</Link>
+              <Link href="/clinics">Clinics</Link>
+              <Link href="/blog">Blog</Link>
             </div>
             <div className="foot-col">
               <h4>Get in touch</h4>
               <a href="mailto:hello@goldmanautomation.co.uk">hello@goldmanautomation.co.uk</a>
-              <a href="#contact">Book a free audit</a>
+              <Link href="/#contact">Request a callback</Link>
             </div>
           </div>
         </div>
         <div className="copyright">
           <div className="wrap">
             <span>© 2026 Goldman Automation</span>
-            <span>Built by a founder, not an agency.</span>
+            <span>
+              Privacy policy, terms and data-processing details available on request.
+            </span>
           </div>
         </div>
       </footer>
+
+      <Link href="#contact" className="mobile-cta">
+        <span className="btn btn-primary">Request a callback</span>
+      </Link>
 
       <script
         type="application/ld+json"

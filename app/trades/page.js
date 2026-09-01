@@ -85,7 +85,6 @@ export default function TradesPage() {
 
       <header className="hero" id="top">
         <div className="wrap">
-          <span className="eyebrow reveal">// automation for trades · London</span>
           <h1 className="reveal">You&#39;re on site. The phone rings. <em>Nobody answers.</em></h1>
           <p className="lead reveal">London trades lose good jobs every day — not because the work isn&#39;t there, but because the enquiry came in while they were up a ladder or in a ditch. <b>LeadAgentAI catches every call, scores every lead and does the chasing automatically.</b></p>
           <div className="hero-cta reveal">
@@ -99,7 +98,6 @@ export default function TradesPage() {
       <section id="pains">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// where the jobs leak</span>
             <h2>You&#39;re not short of work. You&#39;re losing it while you&#39;re working.</h2>
             <p>The leaks in a trades business are almost always the same. None of them are hard to fix once they&#39;re visible.</p>
           </div>
@@ -116,7 +114,7 @@ export default function TradesPage() {
             </div>
             <div className="prob reveal">
               <div className="ic" aria-hidden="true">▢</div>
-              <h3>Leads pile up unchaseed</h3>
+              <h3>Leads pile up unchased</h3>
               <p>You got the enquiry. You meant to follow up. It&#39;s been five days and the lead is cold — an automatic job if you&#39;d sent a message on day two.</p>
             </div>
             <div className="prob reveal">
@@ -131,7 +129,6 @@ export default function TradesPage() {
       <section id="how-it-works" style={{background:'var(--bone-alt)'}}>
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// the leadagentai system</span>
             <h2>Every enquiry caught, scored and chased.</h2>
             <p>Built by someone who ran a London construction firm — not built in a meeting room.</p>
           </div>
@@ -167,9 +164,9 @@ export default function TradesPage() {
               </div>
             </div>
             <div className="case-stats">
-              <div className="cstat"><div className="cn">73%</div><div className="cl">enquiry response rate</div></div>
+              <div className="cstat"><div className="cn">119</div><div className="cl">enquiries handled</div></div>
               <div className="cstat"><div className="cn">6.7</div><div className="cl">avg lead score / 10</div></div>
-              <div className="cstat"><div className="cn">5 hr</div><div className="cl">avg reply time</div></div>
+              <div className="cstat"><div className="cn">2 min</div><div className="cl">for the AI to draft a reply</div></div>
             </div>
           </div>
         </div>
@@ -178,23 +175,22 @@ export default function TradesPage() {
       <section id="process">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// how it works</span>
             <h2>Simple, fixed-scope, no lock-in</h2>
             <p>You don&#39;t need a spec or a tech team. Bring the problem; I&#39;ll quantify it, build the fix, and support it.</p>
           </div>
           <div className="proc-grid">
             <div className="proc-step reveal">
-              <div className="pn">step 01</div>
+              <div className="pn">Step 1</div>
               <h3>Free lost-revenue audit</h3>
               <p>A 20-minute call where we put a real number on what missed calls and slow follow-ups are costing you. No pitch, just the figure.</p>
             </div>
             <div className="proc-step reveal">
-              <div className="pn">step 02</div>
+              <div className="pn">Step 2</div>
               <h3>Fixed-scope go-live</h3>
               <p>One setup fee, one clear scope, live in 7–10 working days. I build and tune the system around your business and hand it over working.</p>
             </div>
             <div className="proc-step reveal">
-              <div className="pn">step 03</div>
+              <div className="pn">Step 3</div>
               <h3>Monthly support</h3>
               <p>I monitor, maintain and improve it as you grow. 30-day rolling, no long contracts, cancel any time.</p>
             </div>
@@ -209,7 +205,6 @@ export default function TradesPage() {
       <section className="pack-wrap" id="pricing">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// pricing</span>
             <h2>Fixed scope. Fixed price. Live in days.</h2>
             <p>One setup fee, one clear scope, live in 7–10 working days. No surprises, no lock-in.</p>
           </div>
@@ -240,7 +235,6 @@ export default function TradesPage() {
 
       <div className="cta" id="contact">
         <div className="wrap">
-          <span className="eyebrow">// let&#39;s get your jobs back</span>
           <h2>Book a free lost-revenue audit.</h2>
           <p>Twenty minutes. We&#39;ll put a number on what missed calls are costing you, and I&#39;ll tell you honestly what&#39;s worth fixing — no pitch, no obligation.</p>
           <div className="cta-row">

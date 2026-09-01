@@ -85,7 +85,6 @@ export default function ClinicsPage() {
 
       <header className="hero" id="top">
         <div className="wrap">
-          <span className="eyebrow reveal">// automation for clinics · London</span>
           <h1 className="reveal">Stop losing bookings to missed calls, and revenue to <em>no-shows</em>.</h1>
           <p className="lead reveal">Scure gives your salon or clinic a 24/7 AI receptionist that books clients, sends reminders, captures deposits, keeps records and chases reviews — while you focus on the work. <b>Built for beauty studios, aesthetic clinics, physios and dental practices.</b></p>
           <div className="hero-cta reveal">
@@ -99,7 +98,6 @@ export default function ClinicsPage() {
       <section id="pains">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// where clinics lose money</span>
             <h2>You can&#39;t grow a business while running the front desk from a treatment room.</h2>
             <p>The gaps in a clinic&#39;s revenue are almost always the same: missed calls, no-shows, admin that doesn&#39;t happen, and clients who don&#39;t come back.</p>
           </div>
@@ -131,7 +129,6 @@ export default function ClinicsPage() {
       <section id="how-it-works" style={{background:'var(--bone-alt)'}}>
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// the scure system</span>
             <h2>A full practice management system, built for busy clinics.</h2>
             <p>Built from running a North London beauty studio — every feature came from a real operational problem.</p>
           </div>
@@ -167,7 +164,7 @@ export default function ClinicsPage() {
               </div>
               <div className="feat">
                 <div className="ft"><span aria-hidden="true">◆</span> Client records with before/after photos</div>
-                <div className="fd">Per-client profiles with treatment notes, photos, digital consents and signatures — searchable, GDPR-safe, never lost.</div>
+                <div className="fd">Per-client profiles with treatment notes, photos, digital consents and signatures — searchable, designed to support UK GDPR-compliant workflows, never lost.</div>
               </div>
               <div className="feat">
                 <div className="ft"><span aria-hidden="true">◆</span> Owner dashboard</div>
@@ -175,9 +172,9 @@ export default function ClinicsPage() {
               </div>
             </div>
             <div className="case-stats">
-              <div className="cstat"><div className="cn">21</div><div className="cl">five-star Google reviews</div></div>
-              <div className="cstat"><div className="cn">EN / PL</div><div className="cl">bilingual receptionist</div></div>
-              <div className="cstat"><div className="cn">0</div><div className="cl">enquiries missed overnight</div></div>
+              <div className="cstat"><div className="cn">33</div><div className="cl">five-star Google reviews</div></div>
+              <div className="cstat"><div className="cn">£2,205</div><div className="cl">booked through the system</div></div>
+              <div className="cstat"><div className="cn">~£200</div><div className="cl">/mo saved in Treatwell commission</div></div>
             </div>
             <p className="touch">A small touch clients notice: a step-by-step parking guide arrives automatically with every booking confirmation.</p>
           </div>
@@ -187,23 +184,22 @@ export default function ClinicsPage() {
       <section id="process">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// how it works</span>
             <h2>Simple, fixed-scope, no lock-in</h2>
             <p>You don&#39;t need a spec or a tech team. Bring the problem; I&#39;ll quantify it, build the fix, and support it.</p>
           </div>
           <div className="proc-grid">
             <div className="proc-step reveal">
-              <div className="pn">step 01</div>
+              <div className="pn">Step 1</div>
               <h3>Free lost-revenue audit</h3>
               <p>A 20-minute call where we put a real number on what missed bookings, no-shows and admin are costing you. No pitch, just the figure.</p>
             </div>
             <div className="proc-step reveal">
-              <div className="pn">step 02</div>
+              <div className="pn">Step 2</div>
               <h3>Fixed-scope go-live</h3>
               <p>One setup fee, one clear scope, live in approximately 14 days. I build and tune the system around your practice and hand it over working.</p>
             </div>
             <div className="proc-step reveal">
-              <div className="pn">step 03</div>
+              <div className="pn">Step 3</div>
               <h3>Monthly support</h3>
               <p>I monitor, maintain and improve it as you grow. 30-day rolling, no long contracts, cancel any time.</p>
             </div>
@@ -218,7 +214,6 @@ export default function ClinicsPage() {
       <section className="pack-wrap" id="pricing">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">// pricing</span>
             <h2>Fixed scope. Fixed price. Live in days.</h2>
             <p>One setup fee, one clear scope, live in approximately 14 days. No surprises, no lock-in.</p>
           </div>
@@ -249,7 +244,6 @@ export default function ClinicsPage() {
 
       <div className="cta" id="contact">
         <div className="wrap">
-          <span className="eyebrow">// let&#39;s fill your diary</span>
           <h2>Book a free lost-revenue audit.</h2>
           <p>Twenty minutes. We&#39;ll look at where bookings and revenue are leaking, and I&#39;ll tell you honestly what&#39;s worth automating — no obligation, no jargon.</p>
           <div className="cta-row">
