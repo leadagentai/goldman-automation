@@ -269,8 +269,10 @@ header.hero{padding:80px 0 64px}
 .price-card .figure{font-family:var(--serif);font-size:1.35rem;color:var(--graphite);margin-bottom:6px}
 .price-card .figure b{color:var(--green-deep)}
 .price-card .timing{font-size:0.9rem;color:var(--muted)}
-.pricing-link{font-size:0.98rem}
+.pricing-link{font-size:0.98rem;margin-top:14px}
 .pricing-link a{color:var(--green-deep);font-weight:500;border-bottom:1px solid var(--gold)}
+.paths-note{margin-top:26px;font-size:1rem;color:var(--ink-soft)}
+.paths-note a{color:var(--green-deep);font-weight:500;border-bottom:1px solid var(--gold)}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:52px;align-items:center}

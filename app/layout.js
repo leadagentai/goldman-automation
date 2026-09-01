@@ -1,13 +1,13 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Goldman Automation — fewer missed calls, fewer no-shows, less admin | London',
+  title: 'Goldman Automation — stop losing money to admin | London',
   description:
-    "Practical AI automation for London trades and clinics. Capture every enquiry, fill every slot, cut the admin. Built by a founder who's run the businesses he automates. Packages from £495 setup + £299/mo.",
+    "I design, build and run automation systems that stop businesses losing money to admin. Proven in construction and beauty, built to fit whatever your business needs. From £495 setup + £299/mo, bespoke from £1,500.",
   openGraph: {
     title: 'Goldman Automation — built by a founder, not an agency',
     description:
-      'AI automation for London trades and clinics. Stop losing jobs to missed calls and bookings to no-shows.',
+      'Automation systems that stop businesses losing money to admin. Proven in construction and beauty, built to fit any business.',
     type: 'website',
     locale: 'en_GB',
     url: 'https://goldmanautomation.co.uk/',

@@ -199,10 +199,11 @@ export default function Home() {
       <header className="hero" id="top">
         <div className="wrap hero-grid">
           <div className="hero-copy reveal">
-            <h1>Stop losing jobs to <em>missed calls</em>.</h1>
+            <h1>Stop losing money to <em>admin</em>.</h1>
             <p className="lead">
-              I design, build and run automation systems for trades and clinics — so every
-              enquiry gets a response, follow-ups happen on time, and you get your evenings back.
+              I design, build and run automation systems that stop businesses losing money to
+              admin — every enquiry answered, every follow-up on time, less paperwork. Proven in
+              construction and beauty, built to fit whatever your business needs.
             </p>
             <div className="hero-cta">
               <Link href="#contact" className="btn btn-primary">
@@ -218,7 +219,7 @@ export default function Home() {
           </div>
 
           <div className="flow reveal" aria-label="How an enquiry moves through the system">
-            <div className="flow-title">What happens when a call comes in</div>
+            <div className="flow-title">One example — a missed call comes in</div>
             {flowSteps.map((step, i) => (
               <div key={step.label}>
                 <div className="flow-step">
@@ -265,8 +266,11 @@ export default function Home() {
       <section id="paths">
         <div className="wrap">
           <div className="sec-head reveal">
-            <h2>Two systems, built for two kinds of business</h2>
-            <p>Both are already running in real businesses. Pick the one that fits yours.</p>
+            <h2>Two examples of the same idea</h2>
+            <p>
+              The same process, applied to two different businesses. If yours looks different,
+              that&#39;s fine — the process is the same.
+            </p>
           </div>
           <div className="path-grid">
             <div className="path-card reveal">
@@ -292,6 +296,10 @@ export default function Home() {
               <Link href="/clinics" className="btn btn-ghost">See automation for clinics</Link>
             </div>
           </div>
+          <p className="paths-note reveal">
+            Not trades or clinics? <Link href="#contact">Book the audit anyway</Link> — the
+            process doesn&#39;t change.
+          </p>
         </div>
       </section>
 
@@ -336,8 +344,9 @@ export default function Home() {
           <div className="sec-head reveal">
             <h2>Real systems, already running</h2>
             <p>
-              Both are products I built from scratch and run every day. The numbers are real and
-              attributed.
+              These are the two systems I&#39;ve built and run myself — proof of what automation can
+              actually do in a real business, not a limit on what I build. If your business looks
+              different, the process is the same. The numbers below are real and attributed.
             </p>
           </div>
 
@@ -428,8 +437,8 @@ export default function Home() {
               <div className="bnum">1</div>
               <h3>Free lost-revenue audit</h3>
               <p>
-                20 minutes. A real number on what missed calls, no-shows and admin are costing you.
-                No pitch.
+                20 minutes. A real number on what admin is costing your business — whatever that
+                looks like for you. No pitch.
               </p>
             </div>
             <div className="how-step">
@@ -477,6 +486,10 @@ export default function Home() {
             </div>
           </div>
           <p className="pricing-link reveal">
+            Something else entirely? <b>Bespoke automation from £1,500.</b> If a task is repetitive,
+            it can almost certainly be automated — tell me what yours is.
+          </p>
+          <p className="pricing-link reveal">
             See full pricing and what&#39;s included on{' '}
             <Link href="/trades">trades</Link> or <Link href="/clinics">clinics</Link>.
           </p>
@@ -497,6 +510,10 @@ export default function Home() {
               The Scure system started the same way: I built it with my partner&#39;s beauty studio
               as the proving ground, where every feature had to earn its place against a real day&#39;s
               work.
+            </p>
+            <p>
+              LeadAgentAI and Scure are proof of the process, not the limit of it — now I build the
+              same thing for any business losing money to admin.
             </p>
             <p>
               When you work with me, you work directly with the person who designs and runs your
