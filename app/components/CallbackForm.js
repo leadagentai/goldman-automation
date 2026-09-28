@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { BUSINESS_TYPE_LABELS, PROBLEM_LABELS } from '@/lib/businessTypes';
 
 const DAY_OPTIONS = [
   'Mon–Fri morning',
@@ -11,6 +12,8 @@ const DAY_OPTIONS = [
 export default function CallbackForm() {
   const [times, setTimes] = useState([]);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   function toggleTime(value) {
     setTimes((prev) =>
@@ -18,20 +21,45 @@ export default function CallbackForm() {
     );
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // TODO: POST to /api/callback — sends branded confirmation to the lead
-    // and a notification to Adrian (same Resend pattern as Scure confirmations).
-    setSubmitted(true);
+    setError('');
+    const form = new FormData(e.target);
+
+    const payload = {
+      name: form.get('name'),
+      phone: form.get('phone'),
+      email: form.get('email'),
+      business: form.get('business'),
+      problem: form.get('problem'),
+      times,
+      notes: form.get('notes'),
+      website: form.get('website'), // honeypot
+    };
+
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong sending that. Please email hello@goldmanautomation.co.uk instead.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
     return (
       <div className="form-success">
-        <h3>Got it — thanks.</h3>
+        <h3>Got it.</h3>
         <p>
-          I&#39;ll be in touch on one of the days you picked. You&#39;ll get a confirmation
-          email shortly with what to expect from the call.
+          Check your inbox for a confirmation. Adrian will call you at one of the times you
+          picked, usually within one working day.
         </p>
       </div>
     );
@@ -60,9 +88,11 @@ export default function CallbackForm() {
           <option value="" disabled>
             Choose one
           </option>
-          <option value="trades">Construction &amp; trades</option>
-          <option value="clinic">Beauty &amp; clinics</option>
-          <option value="other">Something else</option>
+          {Object.entries(BUSINESS_TYPE_LABELS).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -72,11 +102,11 @@ export default function CallbackForm() {
           <option value="" disabled>
             Choose one
           </option>
-          <option value="missed-calls">Missed calls and enquiries</option>
-          <option value="no-shows">No-shows and cancellations</option>
-          <option value="follow-up">Following up and chasing</option>
-          <option value="paperwork">Forms, records and paperwork</option>
-          <option value="other">Something else</option>
+          {Object.entries(PROBLEM_LABELS).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -103,8 +133,15 @@ export default function CallbackForm() {
         <textarea id="cb-notes" name="notes" rows={3} />
       </div>
 
-      <button type="submit" className="btn btn-primary btn-block">
-        Request a callback
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+        <label htmlFor="cb-website">Leave this field blank</label>
+        <input id="cb-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      {error && <p className="form-note" style={{ color: '#b3261e' }}>{error}</p>}
+
+      <button type="submit" className="btn btn-primary btn-block" disabled={submitting}>
+        {submitting ? 'Sending…' : 'Request a callback'}
       </button>
       <p className="form-note">
         No fixed slot, no back-and-forth. I&#39;ll call you on one of the days you pick.
