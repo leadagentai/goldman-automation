@@ -20,7 +20,7 @@ export default function Nav() {
           <Link href="/clinics" className="lk" style={pathname === '/clinics' ? active : undefined}>
             Clinics
           </Link>
-          <Link href="/#contact" className="btn btn-primary">Book a callback</Link>
+          <Link href="/#contact" className="btn btn-primary">Book a free audit</Link>
         </div>
       </div>
     </nav>

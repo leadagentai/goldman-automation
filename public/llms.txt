@@ -1,8 +1,8 @@
 # Goldman Automation
 
-Goldman Automation is a one-person London studio run by Adrian Goldman. Adrian ran a construction company (Sagittarius Construction) before building software, and now designs, builds and runs automation systems that stop businesses losing money to admin — so enquiries get a response, follow-ups happen on time, and owners get their evenings back.
+Goldman Automation is a one-person London studio run by Adrian Goldman. Adrian ran a construction company (Sagittarius Construction) before teaching himself to build AI systems, and now implements AI for small businesses, done for you: he finds where a business is losing money to missed calls, no-shows, slow replies and paperwork, builds the fix, and runs it.
 
-Proven in construction and beauty. Built to fit whatever the business needs — trades and clinics are worked examples, not the limit of what Adrian builds. Serves London and remote across the UK.
+Works with any small business, and trades and clinics are proven examples, not the limit of what Adrian builds. Every business gets a free 20-minute lost-revenue audit before any work starts. Serves London and remote across the UK.
 
 ## What it does
 

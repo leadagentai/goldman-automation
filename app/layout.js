@@ -1,18 +1,25 @@
 import './globals.css';
 import MobileCta from './components/MobileCta';
+import ChatWidgetLoader from './components/ChatWidgetLoader';
 
 export const metadata = {
-  title: 'Goldman Automation — stop losing money to admin | London',
+  title: 'Goldman Automation — AI for small businesses, done for you | London',
   description:
-    "I design, build and run automation systems that stop businesses losing money to admin. Proven in construction and beauty, built to fit whatever your business needs. From £495 setup + £299/mo, bespoke from £1,500.",
+    "You know AI could help your business but don't know where to start. I find where you're losing money, build the fix and run it for you. Free 20-minute audit.",
   openGraph: {
-    title: 'Goldman Automation — built by a founder, not an agency',
+    title: 'Goldman Automation — AI for small businesses, done for you',
     description:
-      'Automation systems that stop businesses losing money to admin. Proven in construction and beauty, built to fit any business.',
+      "You know AI could help your business but don't know where to start. I find where you're losing money, build the fix and run it for you. Free 20-minute audit.",
     type: 'website',
     locale: 'en_GB',
     url: 'https://goldmanautomation.co.uk/',
     images: [{ url: 'https://goldmanautomation.co.uk/og-image.png' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Goldman Automation — AI for small businesses, done for you',
+    description:
+      "You know AI could help your business but don't know where to start. I find where you're losing money, build the fix and run it for you. Free 20-minute audit.",
   },
   alternates: {
     canonical: 'https://goldmanautomation.co.uk/',
@@ -37,6 +44,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <MobileCta />
+        <ChatWidgetLoader />
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ const jsonLd = {
       url: 'https://goldmanautomation.co.uk/',
       email: 'hello@goldmanautomation.co.uk',
       description:
-        'A London studio that designs, builds and runs automation systems for trades and clinics — so every enquiry gets a response and follow-ups happen on time.',
+        'A London studio that implements AI for small businesses, done for you. Finds where a business is losing money to missed calls, no-shows, slow replies and paperwork, builds the fix, and runs it. Founder-built, proven in construction and beauty, works with any small business.',
       areaServed: [
         { '@type': 'City', name: 'London' },
         { '@type': 'Country', name: 'United Kingdom' },
@@ -29,7 +29,7 @@ const jsonLd = {
       url: 'https://goldmanautomation.co.uk/',
       email: 'hello@goldmanautomation.co.uk',
       description:
-        'Done-for-you automation for London trades and clinics. Missed-call capture, AI lead scoring, 24/7 booking, no-show reduction and digital records — designed, built and maintained by one person.',
+        'AI implementation for UK small businesses, done for you. Free lost-revenue audit, then a fixed-scope build and an ongoing subscription to run it. Founder-built, London and remote across the UK. Trades and clinics are proven examples, not the limit of what gets built.',
       image: 'https://goldmanautomation.co.uk/og-image.png',
       priceRange: '££',
       currenciesAccepted: 'GBP',
@@ -210,6 +210,18 @@ const leaks = [
 
 const faqs = [
   {
+    q: 'Do I need to know anything about AI?',
+    a: 'No. You tell me how your business runs and where it hurts. I work out what to build, build it, and look after it. You get the result, not a login to configure.',
+  },
+  {
+    q: 'My business isn’t on your list. Can you still help?',
+    a: 'Probably. Missed enquiries, no-shows, chasing and paperwork look the same in most service businesses. The audit is 20 minutes and free. If automation won’t pay for itself for you, I’ll tell you.',
+  },
+  {
+    q: 'Do you do AI phone answering?',
+    a: 'On request. I start with missed-call text-back because it’s proven, cheaper and doesn’t put a robot between you and your customer. Where a voice agent genuinely fits, I’ll build one, and I’ll tell you honestly whether it does.',
+  },
+  {
     q: 'Where is my data stored?',
     a: 'On established cloud infrastructure hosted in the UK and EU. The systems are designed to support UK GDPR-compliant workflows, and you can ask for your data to be exported or deleted at any time.',
   },
@@ -231,6 +243,19 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <>
@@ -239,23 +264,22 @@ export default function Home() {
       <header className="hero" id="top">
         <div className="wrap hero-grid">
           <div className="hero-copy reveal">
-            <h1>Stop losing money to <em>admin</em>.</h1>
+            <h1>You know AI could help your business. <em>You just don&#39;t know where to start.</em></h1>
             <p className="lead">
-              I design, build and run automation systems that stop businesses losing money to
-              admin — so enquiries get a response, follow-ups happen on time, and you get your
-              evenings back. Proven in construction and beauty. Built to fit whatever your
-              business needs.
+              I&#39;m Adrian. I ran a building firm in London, then taught myself to build the
+              systems that stopped it losing jobs. Now I find where your business is losing
+              money, build the fix and run it for you. Whatever the business.
             </p>
             <div className="hero-cta">
               <Link href="#contact" className="btn btn-primary">
                 Book your free lost-revenue audit
               </Link>
-              <Link href="#how-it-works" className="btn btn-ghost">
-                See how the systems work
+              <Link href="#what-it-fixes" className="btn btn-ghost">
+                See what it can fix
               </Link>
             </div>
             <p className="hero-note">
-              20 minutes. No pitch — just the number you&#39;re losing to admin.
+              20 minutes. No pitch. Just the number you&#39;re losing, and where.
             </p>
           </div>
 
@@ -304,62 +328,33 @@ export default function Home() {
         </div>
       </div>
 
-      <section id="paths">
+      <section id="what-it-fixes">
         <div className="wrap">
           <div className="sec-head reveal">
-            <h2>Two examples of the same idea</h2>
+            <h2>Where AI actually earns its keep in a small business</h2>
             <p>
-              The same process, applied to two different businesses. If yours looks different,
-              that&#39;s fine — the process is the same.
+              27–47% of calls to UK small businesses go unanswered. That&#39;s the obvious leak.
+              Most businesses have three or four more. Here&#39;s where they usually hide.
             </p>
           </div>
-          <div className="path-grid">
-            <div className="path-card reveal">
-              <div className="path-kicker">For construction &amp; trades</div>
-              <h3>Never miss a job to a missed call.</h3>
-              <ul>
-                <li>Instant text-back on missed calls</li>
-                <li>Reads plans and photos, drafts a costed reply</li>
-                <li>Automatic follow-up at 48 hours and 7 days</li>
-              </ul>
-              <div className="path-media">[ Image placeholder — jobsite photo or LeadAgentAI screen ]</div>
-              <Link href="/trades" className="btn btn-ghost">See automation for trades</Link>
-            </div>
-            <div className="path-card reveal">
-              <div className="path-kicker">For beauty &amp; clinics</div>
-              <h3>Fully booked. Fewer no-shows.</h3>
-              <ul>
-                <li>24/7 booking in English and Polish</li>
-                <li>Reminders and deposit capture</li>
-                <li>Consultation forms, consents, client records</li>
-              </ul>
-              <div className="path-media">[ Image placeholder — Scure studio photo ]</div>
-              <Link href="/clinics" className="btn btn-ghost">See automation for clinics</Link>
-            </div>
+          <div className="leaks-grid reveal">
+            {leaks.map((leak) => (
+              <div key={leak.name} className="leak-card">
+                <h3>{leak.name}</h3>
+                <p className="leak-label">Problem</p>
+                <p>{leak.problem}</p>
+                <p className="leak-label">Could be automated</p>
+                <p>{leak.auto}</p>
+              </div>
+            ))}
           </div>
-          <div className="paths-note reveal">
+          <div className="leaks-close reveal">
             <p>
-              Running something else? These two are proof of what&#39;s possible, not the limit of
-              what I build. If admin is costing you time or jobs, the audit works the same way —
-              book it and let&#39;s find out where.
+              Don&#39;t see your business here? That&#39;s exactly what the audit is for — 20 minutes,
+              and I&#39;ll tell you where your money&#39;s leaking, whatever the business.
             </p>
-            <Link href="#contact">Not trades or clinics? Book the audit anyway →</Link>
+            <Link href="#contact" className="btn btn-primary">Book your free lost-revenue audit</Link>
           </div>
-        </div>
-      </section>
-
-      <section className="panel" id="what-gets-easier">
-        <div className="wrap">
-          <div className="sec-head reveal">
-            <h2>What gets easier once it&#39;s running</h2>
-          </div>
-          <ul className="easier-list reveal">
-            <li>Give every good enquiry a proper response</li>
-            <li>Keep customer information organised automatically</li>
-            <li>Reduce no-shows with timely reminders and deposits</li>
-            <li>Separate genuine projects from irrelevant enquiries</li>
-            <li>Know exactly what&#39;s worth automating, and what isn&#39;t</li>
-          </ul>
         </div>
       </section>
 
@@ -380,36 +375,6 @@ export default function Home() {
                 <p>{step.copy}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="where-leaks">
-        <div className="wrap">
-          <div className="sec-head reveal">
-            <h2>Where the leaks usually are</h2>
-            <p>
-              27–47% of calls to UK small businesses go unanswered. Every business loses money to
-              admin somewhere — here&#39;s where it usually shows up.
-            </p>
-          </div>
-          <div className="leaks-grid reveal">
-            {leaks.map((leak) => (
-              <div key={leak.name} className="leak-card">
-                <h3>{leak.name}</h3>
-                <p className="leak-label">Problem</p>
-                <p>{leak.problem}</p>
-                <p className="leak-label">Could be automated</p>
-                <p>{leak.auto}</p>
-              </div>
-            ))}
-          </div>
-          <div className="leaks-close reveal">
-            <p>
-              Don&#39;t see your business here? That&#39;s exactly what the audit is for — 20 minutes,
-              and I&#39;ll tell you where your money&#39;s leaking, whatever the business.
-            </p>
-            <Link href="#contact" className="btn btn-primary">Book your free lost-revenue audit</Link>
           </div>
         </div>
       </section>
@@ -590,8 +555,13 @@ export default function Home() {
               work.
             </p>
             <p>
-              LeadAgentAI and Scure are proof of the process, not the limit of it — now I build the
-              same thing for any business losing money to admin.
+              LeadAgentAI and Scure were the proving ground. Now I do the same for any small
+              business that knows AI could help but hasn&#39;t got the time to work out how.
+            </p>
+            <p>
+              You don&#39;t need to understand the technology. You need someone who understands your
+              business, builds the thing that fixes it, and picks up the phone when you need him.
+              That&#39;s the job.
             </p>
             <p>
               When you work with me, you work directly with the person who designs and runs your
@@ -625,6 +595,11 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <Script

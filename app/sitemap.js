@@ -1,6 +1,7 @@
 import { getAllPosts } from '@/lib/posts';
 
-// Bump when the core pages get a substantive rewrite.
+// Bump per-page when that page gets a substantive rewrite.
+const HOME_UPDATED = new Date('2026-09-28');
 const CORE_PAGES_UPDATED = new Date('2026-09-01');
 
 export default function sitemap() {
@@ -9,7 +10,7 @@ export default function sitemap() {
   return [
     {
       url: 'https://goldmanautomation.co.uk/',
-      lastModified: CORE_PAGES_UPDATED,
+      lastModified: HOME_UPDATED,
       changeFrequency: 'monthly',
       priority: 1,
     },
@@ -24,6 +25,12 @@ export default function sitemap() {
       lastModified: CORE_PAGES_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: 'https://goldmanautomation.co.uk/privacy/',
+      lastModified: HOME_UPDATED,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
     {
       url: 'https://goldmanautomation.co.uk/blog/',
