@@ -5,6 +5,7 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { createLead } from '@/lib/createLead';
 import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
 import { SYSTEM_PROMPT, BOOK_AUDIT_TOOL } from '@/lib/chat/system-prompt';
+import { normalizeProblemCategory } from '@/lib/problemSentences';
 
 export const runtime = 'nodejs';
 
@@ -145,6 +146,7 @@ export async function POST(request) {
                 businessName: input.business_name,
                 mainProblem: input.main_problem,
                 bestTimes: input.best_times,
+                problemCategory: normalizeProblemCategory(input.problem_category),
                 language: input.language || 'en',
                 notes: input.notes,
                 chatConversationId: conversationId,

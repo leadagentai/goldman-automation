@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createLead } from '@/lib/createLead';
 import { businessTypeLabel, problemLabel } from '@/lib/businessTypes';
+import { normalizeProblemCategory } from '@/lib/problemSentences';
 
 export async function POST(request) {
   let body;
@@ -37,6 +38,7 @@ export async function POST(request) {
       businessType: businessTypeLabel(business),
       mainProblem: mainProblem.slice(0, 2000),
       bestTimes,
+      problemCategory: normalizeProblemCategory(problem),
       language: 'en',
       notes: notes ? String(notes).slice(0, 2000) : null,
     });

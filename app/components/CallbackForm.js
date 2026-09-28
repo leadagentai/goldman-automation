@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { BUSINESS_TYPE_LABELS, PROBLEM_LABELS } from '@/lib/businessTypes';
 
 const DAY_OPTIONS = [
@@ -9,9 +10,8 @@ const DAY_OPTIONS = [
   'Weekend',
 ];
 
-export default function CallbackForm() {
+export default function CallbackForm({ onSuccess }) {
   const [times, setTimes] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -45,24 +45,11 @@ export default function CallbackForm() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('Request failed');
-      setSubmitted(true);
+      onSuccess?.();
     } catch {
       setError("Something went wrong sending that. Please email hello@goldmanautomation.co.uk instead.");
-    } finally {
       setSubmitting(false);
     }
-  }
-
-  if (submitted) {
-    return (
-      <div className="form-success">
-        <h3>Got it.</h3>
-        <p>
-          Check your inbox for a confirmation. Adrian will call you at one of the times you
-          picked, usually within one working day.
-        </p>
-      </div>
-    );
   }
 
   return (
@@ -145,6 +132,10 @@ export default function CallbackForm() {
       </button>
       <p className="form-note">
         No fixed slot, no back-and-forth. I&#39;ll call you on one of the days you pick.
+      </p>
+      <p className="form-note">
+        By sending this, you agree to Adrian calling you about your enquiry. How we use your
+        details: <Link href="/privacy">Privacy policy</Link>.
       </p>
     </form>
   );

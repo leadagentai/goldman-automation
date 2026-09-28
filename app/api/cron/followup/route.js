@@ -53,5 +53,52 @@ export async function GET(request) {
     }
   }
 
-  return NextResponse.json({ processed: leads?.length || 0, sent });
+  const retention = await runRetentionCleanup();
+
+  return NextResponse.json({ processed: leads?.length || 0, sent, retention });
+}
+
+// Deletes data past the retention periods promised in the privacy policy.
+// "won" leads are never touched — they're simply not in the status list below.
+async function runRetentionCleanup() {
+  const twelveMonthsAgo = new Date();
+  twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
+  const leadsCutoff = twelveMonthsAgo.toISOString();
+  const conversationsCutoff = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString();
+
+  let leadsDeleted = 0;
+  try {
+    const { data, error } = await supabaseAdmin()
+      .from('site_leads')
+      .delete()
+      .in('status', ['new', 'contacted', 'audit_done', 'lost', 'unsubscribed'])
+      .or(
+        `and(contacted_at.is.null,created_at.lt.${leadsCutoff}),and(contacted_at.not.is.null,contacted_at.lt.${leadsCutoff})`
+      )
+      .select('id');
+    if (error) throw error;
+    leadsDeleted = data?.length || 0;
+  } catch (err) {
+    console.error(`[cron] step=retention_leads error=${err.message || err}`);
+  }
+
+  let conversationsDeleted = 0;
+  try {
+    const { data, error } = await supabaseAdmin()
+      .from('chat_conversations')
+      .delete()
+      .is('lead_id', null)
+      .lt('created_at', conversationsCutoff)
+      .select('id');
+    if (error) throw error;
+    conversationsDeleted = data?.length || 0;
+  } catch (err) {
+    console.error(`[cron] step=retention_conversations error=${err.message || err}`);
+  }
+
+  console.log(
+    `[cron] retention: deleted ${leadsDeleted} lead(s), ${conversationsDeleted} chat conversation(s)`
+  );
+
+  return { leadsDeleted, conversationsDeleted };
 }

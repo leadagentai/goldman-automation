@@ -39,8 +39,7 @@ export default function SiteFooter() {
         <div className="wrap">
           <span>© 2026 Goldman Automation</span>
           <span>
-            <Link href="/privacy">Privacy policy</Link>. Terms and data-processing details
-            available on request.
+            <Link href="/privacy">Privacy policy</Link>
           </span>
         </div>
       </div>
