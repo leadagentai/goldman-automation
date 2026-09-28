@@ -528,6 +528,24 @@ footer .wrap{padding:48px 28px;display:flex;justify-content:space-between;gap:32
 }
 .chat-fab:hover{background:var(--green-mid);transform:translateY(-1px)}
 
+.chat-teaser{
+  position:fixed;right:24px;bottom:86px;z-index:80;
+  display:flex;align-items:center;gap:6px;
+  max-width:min(260px,calc(100vw - 48px));
+  background:#fff;border:1px solid var(--line-strong);border-radius:12px;
+  padding:10px 10px 10px 14px;box-shadow:var(--shadow);
+  animation:chat-teaser-in .25s ease;
+}
+@keyframes chat-teaser-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.chat-teaser-text{
+  background:none;border:none;padding:0;text-align:left;cursor:pointer;
+  font-family:var(--sans);font-size:0.85rem;line-height:1.4;color:var(--graphite);
+}
+.chat-teaser-dismiss{
+  flex:none;background:none;border:none;color:var(--muted);font-size:1.1rem;line-height:1;
+  cursor:pointer;padding:2px 4px;order:2;
+}
+
 .chat-panel{
   position:fixed;right:24px;bottom:24px;z-index:90;
   width:380px;max-width:calc(100vw - 32px);height:min(600px,calc(100vh - 48px));
@@ -566,6 +584,7 @@ footer .wrap{padding:48px 28px;display:flex;justify-content:space-between;gap:32
 
 @media(max-width:900px){
   .chat-fab{bottom:88px}
+  .chat-teaser{bottom:150px}
 }
 @media(max-width:640px){
   .chat-panel{
