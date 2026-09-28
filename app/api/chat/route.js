@@ -155,7 +155,9 @@ export async function POST(request) {
               });
               leadBooked = true;
               toolResultContent = 'Booked. Confirm this to the visitor now, briefly.';
-            } catch {
+            } catch (err) {
+              // createLead already logged the specific [lead] step=db_insert failure.
+              console.error(`[lead] step=book_audit_tool error=${err.message || err}`);
               toolResultContent =
                 'System error saving the booking. Apologise briefly and give them hello@goldmanautomation.co.uk instead.';
             }
