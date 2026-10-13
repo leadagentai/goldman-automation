@@ -68,8 +68,10 @@ export default function ChatWidget() {
     setHydrated(true);
   }, []);
 
+  // Only store the conversation once the visitor has actually sent something,
+  // so nothing is written to their browser just for loading a page.
   useEffect(() => {
-    if (hydrated) saveSession(STORAGE_MESSAGES, messages);
+    if (hydrated && messages.some((m) => m.role === 'user')) saveSession(STORAGE_MESSAGES, messages);
   }, [messages, hydrated]);
 
   useEffect(() => {

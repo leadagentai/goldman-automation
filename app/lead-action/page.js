@@ -16,7 +16,7 @@ export default async function LeadActionPage({ searchParams }) {
 
   if (!verified || verified.action === 'unsubscribe') {
     return (
-      <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'Inter, sans-serif' }}>
+      <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'var(--sans)' }}>
         <h1>Link expired or invalid</h1>
         <p>This link has already been used, expired, or isn&#39;t valid.</p>
       </main>
@@ -29,7 +29,7 @@ export default async function LeadActionPage({ searchParams }) {
   const { error } = await supabaseAdmin().from('site_leads').update(update).eq('id', verified.leadId);
 
   return (
-    <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'Inter, sans-serif' }}>
+    <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'var(--sans)' }}>
       <h1>{error ? 'Something went wrong' : 'Done'}</h1>
       <p>
         {error

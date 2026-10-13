@@ -1,6 +1,24 @@
+import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 import MobileCta from './components/MobileCta';
 import ChatWidgetLoader from './components/ChatWidgetLoader';
+
+// Self-hosted at build time by next/font: no requests to Google from visitors' browsers.
+// Fraunces is loaded as a variable font so the optical-size axis (opsz) still applies.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
+  display: 'swap',
+  variable: '--font-fraunces',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata = {
   title: 'Goldman Automation — AI for small businesses, done for you | London',
@@ -32,15 +50,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <body>
         {children}
         <MobileCta />

@@ -9,7 +9,7 @@ export default async function UnsubscribePage({ searchParams }) {
 
   if (!verified || verified.action !== 'unsubscribe') {
     return (
-      <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'Inter, sans-serif' }}>
+      <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'var(--sans)' }}>
         <h1>Link expired or invalid</h1>
         <p>This unsubscribe link has already been used or isn&#39;t valid.</p>
       </main>
@@ -22,7 +22,7 @@ export default async function UnsubscribePage({ searchParams }) {
     .eq('id', verified.leadId);
 
   return (
-    <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'Inter, sans-serif' }}>
+    <main style={{ maxWidth: 480, margin: '80px auto', padding: '0 20px', fontFamily: 'var(--sans)' }}>
       <h1>{error ? 'Something went wrong' : 'Unsubscribed'}</h1>
       <p>
         {error

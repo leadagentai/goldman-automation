@@ -36,7 +36,7 @@ export default function PrivacyPage() {
         <div className="article-header">
           <h1>Privacy policy</h1>
           <div className="article-meta">
-            <span>Last updated: 28 September 2026</span>
+            <span>Last updated: 13 October 2026</span>
           </div>
         </div>
 
@@ -165,9 +165,34 @@ export default function PrivacyPage() {
 
           <h2 id="cookies">Cookies</h2>
           <p>
-            This website doesn&#39;t use advertising or tracking cookies. The chat assistant uses
-            your browser&#39;s session storage to keep your conversation open while you move
-            between pages. It&#39;s cleared when you close the browser tab.
+            This website doesn&#39;t set any cookies. There&#39;s no advertising, no tracking and
+            no analytics.
+          </p>
+          <p>
+            The only things we store on your device are for the chat assistant, in your
+            browser&#39;s session storage:
+          </p>
+          <ul>
+            <li>
+              <b>ga_chat_messages</b>: your chat conversation, so it stays open as you move between
+              pages.
+            </li>
+            <li>
+              <b>ga_chat_conversation_id</b>: a reference that keeps your messages in the same
+              conversation.
+            </li>
+            <li>
+              <b>ga_chat_teaser_seen</b>: remembers that you&#39;ve opened or closed the chat
+              prompt, so it doesn&#39;t keep popping up.
+            </li>
+          </ul>
+          <p>
+            Session storage is cleared when you close the browser tab. It&#39;s only used to make
+            the chat work, so we don&#39;t ask for consent for it.
+          </p>
+          <p>
+            The lost-revenue calculator runs entirely in your browser and doesn&#39;t store
+            anything. Your answers only reach us if you choose to send the callback form.
           </p>
 
           <h2 id="children">Children</h2>
