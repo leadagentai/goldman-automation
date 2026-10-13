@@ -85,7 +85,7 @@ em{font-style:italic}
 .btn-block{width:100%}
 
 /* ---------- nav ---------- */
-nav{
+.site-nav{
   position:sticky;top:0;z-index:60;
   background:rgba(246,242,231,0.88);
   backdrop-filter:blur(10px);
@@ -740,4 +740,64 @@ footer .wrap{padding:48px 28px;display:flex;justify-content:space-between;gap:32
   .calc-card{padding:20px 16px}
   .calc-cta{padding:22px 18px}
   .calc-nav .btn{flex:1;min-width:0}
+}
+
+/* ---------- mobile menu (shared Nav) ---------- */
+.nav-toggle{
+  display:none;flex:none;width:48px;height:48px;margin-right:-10px;
+  align-items:center;justify-content:center;
+  background:none;border:0;border-radius:10px;cursor:pointer;color:var(--graphite);
+}
+.nav-toggle:hover{color:var(--green-deep)}
+.nav-toggle-bars{position:relative;display:block;width:22px;height:16px}
+.nav-toggle-bars span{
+  position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:currentColor;
+  transition:transform .2s ease,opacity .2s ease,top .2s ease;
+}
+.nav-toggle-bars span:nth-child(1){top:0}
+.nav-toggle-bars span:nth-child(2){top:7px}
+.nav-toggle-bars span:nth-child(3){top:14px}
+.nav-toggle[aria-expanded=true] .nav-toggle-bars span:nth-child(1){top:7px;transform:rotate(45deg)}
+.nav-toggle[aria-expanded=true] .nav-toggle-bars span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded=true] .nav-toggle-bars span:nth-child(3){top:7px;transform:rotate(-45deg)}
+
+.nav-menu{
+  position:absolute;top:100%;left:0;right:0;z-index:2;
+  background:var(--bg-cream);border-bottom:1px solid var(--line);
+  box-shadow:0 12px 24px rgba(36,38,31,0.08);
+  max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;
+}
+.nav-menu[hidden]{display:none}
+.nav-menu .wrap{padding-top:8px;padding-bottom:20px}
+.nav-menu ul{list-style:none;margin-bottom:16px}
+.nav-menu li{border-bottom:1px solid var(--line)}
+.nav-menu li a{
+  display:flex;align-items:center;min-height:52px;padding:4px 0;
+  font-size:1.05rem;font-weight:500;color:var(--graphite);
+}
+.nav-menu li a:hover,.nav-menu li a[aria-current=page]{color:var(--green-deep)}
+.nav-menu .btn{min-height:48px}
+.nav-backdrop{position:fixed;left:0;right:0;bottom:0;top:68px;z-index:1;background:rgba(36,38,31,0.35)}
+
+/* Above the sticky CTA bar (70) and chat widget (80/90) while open.
+   backdrop-filter is dropped so the fixed backdrop isn't trapped inside the header. */
+.site-nav.menu-open{z-index:100;background:var(--bg-cream);backdrop-filter:none;-webkit-backdrop-filter:none}
+
+@media(max-width:900px){
+  .nav-toggle{display:inline-flex}
+  .nav-links{gap:8px}
+}
+@media(min-width:901px){
+  .nav-menu,.nav-backdrop{display:none}
+}
+@media(max-width:374px){
+  .nav-cta{display:none}
+}
+
+/* homepage hero: calculator link */
+.hero-calc{margin-top:14px;font-size:0.95rem}
+.hero-calc a{color:var(--green-deep);font-weight:500;border-bottom:1px solid var(--gold)}
+@media(max-width:560px){
+  .nav-inner{padding:0 20px;gap:12px}
+  .nav-menu .wrap{padding-left:20px;padding-right:20px}
 }

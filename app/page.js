@@ -281,6 +281,9 @@ export default function Home() {
             <p className="hero-note">
               20 minutes. No pitch. Just the number you&#39;re losing, and where.
             </p>
+            <p className="hero-calc">
+              <Link href="/calculator">Not sure it&#39;s worth it? Work out your number in 60 seconds</Link>
+            </p>
           </div>
 
           <div className="flow reveal" aria-label="How an enquiry moves through the system">
