@@ -3,6 +3,7 @@ import { getAllPosts } from '@/lib/posts';
 // Bump per-page when that page gets a substantive rewrite.
 const HOME_UPDATED = new Date('2026-09-28');
 const CORE_PAGES_UPDATED = new Date('2026-09-01');
+const CALCULATOR_UPDATED = new Date('2026-10-13');
 
 export default function sitemap() {
   const posts = getAllPosts();
@@ -23,6 +24,12 @@ export default function sitemap() {
     {
       url: 'https://goldmanautomation.co.uk/clinics/',
       lastModified: CORE_PAGES_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://goldmanautomation.co.uk/calculator/',
+      lastModified: CALCULATOR_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

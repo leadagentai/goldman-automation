@@ -232,6 +232,9 @@ export default function TradesPage() {
           <p className="pack-custom reveal" style={{marginTop:'32px'}}>
             Run a salon or clinic? <b><Link href="/clinics" style={{color:'var(--green-deep)'}}>See the clinics package →</Link></b>
           </p>
+          <p className="calc-teaser reveal">
+            <Link href="/calculator?industry=trades">Not sure it&#39;s worth it? Work out your number in 60 seconds →</Link>
+          </p>
         </div>
       </section>
 

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/calculator.test.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",

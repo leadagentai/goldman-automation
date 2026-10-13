@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { BUSINESS_TYPE_LABELS, PROBLEM_LABELS } from '@/lib/businessTypes';
 
@@ -10,10 +10,48 @@ const DAY_OPTIONS = [
   'Weekend',
 ];
 
+const PREFILL_EVENT = 'callback-form:prefill';
+
+/**
+ * Lets another part of the page (e.g. the /calculator results) drop text into the
+ * "Anything else?" field, then scrolls to the form and focuses the first empty
+ * required field. Falls back to jumping to #contact if no form is listening
+ * (e.g. it has already been submitted).
+ */
+export function prefillCallbackForm(notes) {
+  const event = new CustomEvent(PREFILL_EVENT, { detail: { notes }, cancelable: true });
+  const handled = !window.dispatchEvent(event);
+  if (!handled) {
+    document.getElementById('contact')?.scrollIntoView({ behavior: scrollBehaviour() });
+  }
+}
+
+function scrollBehaviour() {
+  return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+}
+
 export default function CallbackForm({ onSuccess }) {
   const [times, setTimes] = useState([]);
+  const [notes, setNotes] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    function onPrefill(e) {
+      e.preventDefault();
+      setNotes(e.detail.notes);
+      const form = formRef.current;
+      if (!form) return;
+      const target =
+        Array.from(form.querySelectorAll('[required]')).find((el) => !el.value) ||
+        form.querySelector('#cb-notes');
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ behavior: scrollBehaviour(), block: 'center' });
+    }
+    window.addEventListener(PREFILL_EVENT, onPrefill);
+    return () => window.removeEventListener(PREFILL_EVENT, onPrefill);
+  }, []);
 
   function toggleTime(value) {
     setTimes((prev) =>
@@ -33,7 +71,7 @@ export default function CallbackForm({ onSuccess }) {
       business: form.get('business'),
       problem: form.get('problem'),
       times,
-      notes: form.get('notes'),
+      notes,
       website: form.get('website'), // honeypot
     };
 
@@ -53,7 +91,7 @@ export default function CallbackForm({ onSuccess }) {
   }
 
   return (
-    <form className="callback-form" onSubmit={handleSubmit}>
+    <form className="callback-form" onSubmit={handleSubmit} ref={formRef}>
       <div className="field">
         <label htmlFor="cb-name">Your name</label>
         <input id="cb-name" name="name" type="text" autoComplete="name" required />
@@ -117,7 +155,13 @@ export default function CallbackForm({ onSuccess }) {
 
       <div className="field">
         <label htmlFor="cb-notes">Anything else? (optional)</label>
-        <textarea id="cb-notes" name="notes" rows={3} />
+        <textarea
+          id="cb-notes"
+          name="notes"
+          rows={notes ? 8 : 3}
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+        />
       </div>
 
       <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>

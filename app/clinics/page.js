@@ -241,6 +241,9 @@ export default function ClinicsPage() {
           <p className="pack-custom reveal" style={{marginTop:'32px'}}>
             In the trades? <b><Link href="/trades" style={{color:'var(--green-deep)'}}>See the trades package →</Link></b>
           </p>
+          <p className="calc-teaser reveal">
+            <Link href="/calculator?industry=clinic">Not sure it&#39;s worth it? Work out your number in 60 seconds →</Link>
+          </p>
         </div>
       </section>
 

@@ -34,6 +34,10 @@ Straight talk guarantee: if the free audit shows automation won't pay for itself
 - Beauty & clinics: from £750 setup + £297/month, live in ~14 days
 - Something else: bespoke automation from £1,500, scoped in the audit
 
+## Lost revenue calculator
+
+https://goldmanautomation.co.uk/calculator/ — a free calculator for UK small service businesses (trades, salons and beauty, clinics, other service businesses). Five short questions about enquiries, missed calls, average customer value, no-shows and admin hours give an estimate of what missed enquiries, no-shows and admin cost per month in pounds, and per year in hours, evenings and Saturdays. It runs entirely in the browser; nothing entered is stored or sent anywhere unless the visitor chooses to email it to Adrian. It is an estimate, not a quote — the free audit gives the real number.
+
 ## Contact & homepage
 
 https://goldmanautomation.co.uk/
