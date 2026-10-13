@@ -4,15 +4,11 @@ import { prefillCallbackForm } from '../components/CallbackForm';
 import {
   INDUSTRIES,
   LOST_FOR_GOOD,
-  RECEPTIONIST_COST_RANGE,
   isIndustry,
   calculate,
   buildAuditSummary,
-  formatMoney,
+  buildResultsCopy,
   formatWhole,
-  formatCount,
-  formatUpTo1dp,
-  pluralise,
 } from '@/lib/calculator';
 
 // Everything here runs in the browser only. Nothing is sent anywhere unless the
@@ -95,7 +91,8 @@ export default function Calculator() {
     shouldFocus.current = false;
     if (topRef.current) {
       const top = topRef.current.getBoundingClientRect().top + window.scrollY - 84;
-      if (window.scrollY > top) window.scrollTo({ top });
+      // Results always start from the top; steps only scroll up if we're below them.
+      if (view === 'results' || window.scrollY > top) window.scrollTo({ top: Math.max(0, top) });
     }
     if (focusRef.current) focusRef.current.focus({ preventScroll: true });
   }, [view, stepIndex]);
@@ -201,7 +198,11 @@ export default function Calculator() {
 
   return (
     <div className="calc" ref={topRef}>
-      <h1 className={view === 'intro' ? 'calc-h1' : 'calc-h1 calc-h1-compact'}>
+      <h1
+        className={
+          view === 'intro' ? 'calc-h1' : view === 'steps' ? 'calc-h1 calc-h1-compact' : 'sr-only'
+        }
+      >
         What are missed calls and admin really costing you?
       </h1>
 
@@ -503,8 +504,8 @@ export default function Calculator() {
 
       {view === 'results' && results && industry && (
         <Results
-          industry={industry}
-          results={results}
+          copy={buildResultsCopy(calcInput, results)}
+          worthIt={results.worthIt}
           onBook={() => prefillCallbackForm(summary)}
           focusRef={focusRef}
           onChange={() => go('steps', 0)}
@@ -524,111 +525,85 @@ function FieldError({ id, msg }) {
   );
 }
 
-function Results({ industry, results: r, onBook, focusRef, onChange, onRestart }) {
-  const unitPlural = pluralise(industry.unit, r.lostWorkPerMonth);
-  const evenings = Math.round(r.recoverableEvenings);
+function Results({ copy, worthIt, onBook, focusRef, onChange, onRestart }) {
+  const { hero, hook, details, smallPrint } = copy;
 
   return (
     <div className="calc-results">
-      <div className="calc-headline">
-        <h2 ref={focusRef} tabIndex={-1}>
-          You&#39;re losing around <span className="calc-big">{formatMoney(r.totalLostMonthly)}</span> a month.
-        </h2>
-        <p>That&#39;s about {formatMoney(r.totalLostYearly)} a year.</p>
-      </div>
+      <h2 className="calc-hero" ref={focusRef} tabIndex={-1}>
+        <span className="calc-hero-lead">{hero.lead}</span>
+        <span className="calc-hero-figure">{hero.figure}</span>
+        {hero.tail && <span className="calc-hero-tail">{hero.tail}</span>}
+      </h2>
 
-      <ul className="calc-breakdown">
-        <li className="calc-bd-card">
-          <h3>Missed enquiries</h3>
-          <p>
-            About {formatCount(r.missedPerMonth)} a month, around {formatCount(r.lostForGoodPerMonth)}{' '}
-            of those don&#39;t come back <span aria-hidden="true">→</span>
-            <span className="sr-only">, so</span> around {formatCount(r.lostWorkPerMonth)} lost{' '}
-            {unitPlural} <span aria-hidden="true">→</span>
-            <span className="sr-only">, worth</span> <b>{formatMoney(r.lostFromMissed)}</b>
-          </p>
-        </li>
-        {industry.hasNoShows && r.lostFromNoShows > 0 && (
-          <li className="calc-bd-card">
-            <h3>No-shows</h3>
+      {worthIt ? (
+        <>
+          <section className="calc-hook" aria-labelledby="calc-hook-heading">
+            <h2 id="calc-hook-heading">What if you got just half of that back?</h2>
+            <div className="calc-hook-figures">
+              {hook.money && (
+                <p className="calc-hook-fig">
+                  <span className="calc-hook-num">{hook.money}</span>
+                  <span className="calc-hook-label">a month</span>
+                </p>
+              )}
+              {hook.evenings && (
+                <p className="calc-hook-fig">
+                  <span className="calc-hook-num">{hook.evenings}</span>
+                  <span className="calc-hook-label">evenings a year</span>
+                </p>
+              )}
+            </div>
+          </section>
+
+          <div className="calc-cta">
+            <h2>Find out exactly where it&#39;s going</h2>
             <p>
-              <b>{formatMoney(r.lostFromNoShows)}</b> a month
+              A free 20-minute call. I look at your business and show you what to fix first. No
+              pitch. If it won&#39;t pay for itself, I&#39;ll tell you.
             </p>
-          </li>
-        )}
-        {r.adminHoursPerWeek > 0 && (
-          <li className="calc-bd-card">
-            <h3>Admin</h3>
-            <p>
-              {formatUpTo1dp(r.adminHoursPerWeek)} hours a week = {formatWhole(r.adminHoursPerYear)} hours
-              a year. That&#39;s {formatWhole(r.eveningsPerYear)} evenings, or{' '}
-              {formatWhole(r.saturdaysPerYear)} full Saturdays.
+            <button type="button" className="btn btn-on-dark calc-cta-btn" onClick={onBook}>
+              Book my free audit
+            </button>
+            <p className="calc-cta-note">
+              This adds your answers to the form below. Nothing is sent until you press send.
             </p>
-          </li>
-        )}
-      </ul>
-
-      <div className="calc-honest">
-        <p>
-          If automation won back just half of that, you&#39;d get around{' '}
-          <b>{formatMoney(r.recoverableMonthly)} a month</b>
-          {evenings > 0 && (
-            <>
-              {' '}and <b>{formatWhole(evenings)} evenings a year</b>
-            </>
-          )}{' '}
-          back.
-        </p>
-        <p>
-          For comparison: a full-time receptionist costs {RECEPTIONIST_COST_RANGE} a month and only
-          covers opening hours.
-        </p>
-      </div>
-
-      {r.worthIt ? (
-        <div className="calc-cta">
-          <h2>Want the real number?</h2>
-          <p>
-            This is an estimate from your figures. The free audit is a 20-minute call where I go
-            through your business and find exactly where the money and time are going. No pitch. If
-            automation won&#39;t pay for itself, I&#39;ll tell you.
-          </p>
-          <button type="button" className="btn btn-on-dark calc-cta-btn" onClick={onBook}>
-            Book my free lost-revenue audit
-          </button>
-          <p className="calc-cta-note">
-            This adds your answers to the callback form below. Nothing is sent until you press
-            Request a callback.
-          </p>
-        </div>
+          </div>
+        </>
       ) : (
         <div className="calc-cta calc-cta-plain">
           <h2>Straight answer</h2>
           <p>
-            On these numbers, automation probably won&#39;t pay for itself for you yet. I&#39;d
-            rather tell you that than sell you something you don&#39;t need. If your enquiries grow,
-            run this again.
+            On these numbers, automation probably isn&#39;t worth it for you yet. I&#39;d rather tell
+            you now than sell you something you don&#39;t need. If things get busier, come back and
+            run it again.
           </p>
           <button type="button" className="calc-text-link" onClick={onBook}>
-            Think the numbers are off? Ask me anyway
+            Think I&#39;ve got it wrong? Ask me anyway
           </button>
         </div>
       )}
 
-      <p className="calc-small">
-        Estimate based on your figures and typical UK data. Your audit gives the real number.
-      </p>
+      <details className="calc-details">
+        <summary>How did we work this out?</summary>
+        <ul>
+          {details.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+        <p className="calc-small">{smallPrint}</p>
+      </details>
 
       <p className="calc-founder">
         Built by Adrian Goldman. I ran a London construction company before I built these systems,
         so I know what a missed call costs.
       </p>
 
-      <div className="calc-nav calc-nav-results">
-        <button type="button" className="btn btn-ghost" onClick={onChange}>
+      <div className="calc-quiet-actions">
+        <button type="button" onClick={onChange}>
           Change my numbers
         </button>
-        <button type="button" className="btn btn-ghost" onClick={onRestart}>
+        <button type="button" onClick={onRestart}>
           Start again
         </button>
       </div>
